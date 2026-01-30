@@ -1,10 +1,11 @@
-// components/3d/SkillsGalaxy.tsx
+// components/3d/SkillsGalaxy.tsx - Add this wrapper
 'use client';
 
 import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Text, Float } from '@react-three/drei';
 import * as THREE from 'three';
+import { useScroll } from 'framer-motion';
 
 const skills = [
   { name: 'Go', color: '#00ADD8', size: 1.2 },
@@ -48,7 +49,7 @@ export default function SkillsGalaxy() {
       const mesh = groupRef.current!.children[index];
       if (!mesh) return;
 
-      // Apply velocity
+      // Apply velocity with physics
       mesh.position.add(skill.velocity.clone().multiplyScalar(delta * 10));
 
       // Boundary collision (sphere)
@@ -58,9 +59,14 @@ export default function SkillsGalaxy() {
         skill.velocity.reflect(normal).multiplyScalar(0.8);
       }
 
-      // Gentle rotation
-      groupRef.current!.rotation.y += delta * 0.1;
+      // Gentle individual rotation
+      mesh.rotation.x += delta * 0.5;
+      mesh.rotation.y += delta * 0.3;
     });
+
+    // Group rotation with parallax effect
+    groupRef.current.rotation.y += delta * 0.1;
+    groupRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.2) * 0.1;
   });
 
   return (
@@ -68,7 +74,7 @@ export default function SkillsGalaxy() {
       {skillNodes.map((skill, index) => (
         <Float key={skill.name} speed={2} rotationIntensity={0.5} floatIntensity={0.5}>
           <group position={skill.position}>
-            <mesh>
+            <mesh castShadow>
               <sphereGeometry args={[skill.size * 0.5, 32, 32]} />
               <meshStandardMaterial
                 color={skill.color}
@@ -84,6 +90,8 @@ export default function SkillsGalaxy() {
               color="white"
               anchorX="center"
               anchorY="middle"
+              outlineWidth={0.02}
+              outlineColor="#000000"
             >
               {skill.name}
             </Text>

@@ -1,4 +1,4 @@
-// components/3d/Scene.tsx - Optimized version
+// components/3d/Scene.tsx
 'use client';
 
 import { Canvas } from '@react-three/fiber';
@@ -14,52 +14,59 @@ interface SceneProps {
 
 function SceneLoader() {
   return (
-    <div className="absolute inset-0 flex items-center justify-center">
-      <div className="w-16 h-16 border-4 border-purple-600 border-t-transparent rounded-full animate-spin" />
-    </div>
+    <mesh>
+      <sphereGeometry args={[0.5, 32, 32]} />
+      <meshStandardMaterial color="#8B5CF6" />
+    </mesh>
   );
 }
 
 export default function Scene({ section }: SceneProps) {
   return (
-    <div className="absolute inset-0 z-0">
+    <div className="absolute inset-0 z-0" style={{ background: 'transparent' }}>
       <Canvas 
         shadows 
         dpr={[1, 2]}
-        performance={{ min: 0.5 }}
         gl={{
+          alpha: true,
           antialias: true,
           toneMapping: ACESFilmicToneMapping,
           powerPreference: 'high-performance',
         }}
+        style={{ background: 'transparent' }}
       >
         <PerspectiveCamera makeDefault position={[0, 2, 8]} fov={50} />
         
-        {/* Optimized Lighting */}
-        <ambientLight intensity={0.5} />
+        {/* Enhanced Lighting */}
+        <ambientLight intensity={0.6} />
         <spotLight
           position={[10, 10, 10]}
-          angle={0.15}
+          angle={0.3}
           penumbra={1}
-          intensity={1}
+          intensity={1.5}
           castShadow
-          shadow-mapSize={[512, 512]}
+          shadow-mapSize={[1024, 1024]}
+          color="#ffffff"
         />
-        <pointLight position={[-10, -10, -10]} intensity={0.5} color="#4F46E5" />
+        <pointLight position={[-10, -10, -10]} intensity={0.8} color="#4F46E5" />
+        <pointLight position={[10, 0, -10]} intensity={0.6} color="#EC4899" />
+        <pointLight position={[-10, 5, 5]} intensity={0.6} color="#3B82F6" />
 
-        {/* Environment with performance preset */}
+        {/* Environment */}
         <Environment preset="city" />
+        
+        {/* Ground shadow */}
         <ContactShadows
           position={[0, -2, 0]}
-          opacity={0.5}
+          opacity={0.4}
           scale={20}
           blur={2}
           far={4}
-          resolution={256}
+          resolution={512}
         />
 
-        {/* Conditional 3D content with Suspense */}
-        <Suspense fallback={null}>
+        {/* Conditional 3D content */}
+        <Suspense fallback={<SceneLoader />}>
           {section === 'hero' && <RobotCompanion />}
           {section === 'skills' && <SkillsGalaxy />}
           <Preload all />

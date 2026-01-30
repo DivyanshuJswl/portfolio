@@ -54,11 +54,40 @@ const timeline = [
     tech: ['C++', 'Python', 'System Design', 'Algorithms'],
   },
 ];
-
 export default function Experience() {
   return (
-    <section id="experience" className="min-h-screen py-20 px-4 relative bg-black dark:bg-black light:bg-gray-50">
-      <motion.div
+    <section id="experience" className="min-h-screen py-20 px-4 relative bg-gradient-to-b from-black via-gray-900 to-black dark:from-black dark:via-gray-900 dark:to-black overflow-hidden">
+      {/* Animated Background Effects */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-purple-600/15 dark:bg-purple-600/15 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.3, 1],
+            x: [0, -50, 0],
+            y: [0, 50, 0],
+          }}
+          transition={{
+            duration: 16,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/3 left-1/4 w-[350px] h-[350px] bg-blue-600/15 dark:bg-blue-600/15 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            x: [0, 60, 0],
+            y: [0, -60, 0],
+          }}
+          transition={{
+            duration: 14,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 3
+          }}
+        />
+      </div>
+            <motion.div
         className="max-w-5xl mx-auto"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
