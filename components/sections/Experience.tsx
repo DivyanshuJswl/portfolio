@@ -1,0 +1,149 @@
+// components/sections/Experience.tsx
+'use client';
+
+import { motion } from 'framer-motion';
+import { Briefcase, GraduationCap, Code } from 'lucide-react';
+
+const timeline = [
+  {
+    type: 'work',
+    icon: Briefcase,
+    title: 'SDE 1 Intern',
+    company: 'Zopsmart Technology Pvt Ltd',
+    period: '2025 - Present',
+    location: 'Bengaluru, India',
+    description: 'Building high-performance backend microservices using Go, Apache Kafka, and Docker',
+    achievements: [
+      'Architected event-driven systems processing 10K+ events/sec with Kafka',
+      'Reduced API response time by 40% through optimized Go concurrency patterns',
+      'Implemented distributed tracing and monitoring with Prometheus',
+      'Containerized services using Docker and Podman for seamless deployment',
+    ],
+    tech: ['Go', 'Kafka', 'Docker', 'Podman', 'PostgreSQL', 'Redis'],
+  },
+  {
+    type: 'project',
+    icon: Code,
+    title: 'Full Stack Developer',
+    company: 'Uni Event Hub',
+    period: '2024 - 2025',
+    location: 'Personal Project',
+    description: 'Event aggregation platform connecting students with campus activities',
+    achievements: [
+      'Built RESTful APIs with Node.js/Express serving 5000+ active users',
+      'Implemented real-time notifications using Socket.io',
+      'Designed responsive UI with React and Material-UI',
+      'Integrated MongoDB for efficient event data management',
+    ],
+    tech: ['React', 'Node.js', 'MongoDB', 'Express', 'Socket.io'],
+  },
+  {
+    type: 'education',
+    icon: GraduationCap,
+    title: 'B.E. Computer Science & Engineering',
+    company: 'Chandigarh University',
+    period: '2022 - 2026',
+    location: 'Punjab, India',
+    description: 'Specializing in distributed systems, algorithms, and backend development',
+    achievements: [
+      'CGPA: 8.5/10',
+      'Core: Data Structures, Algorithms, DBMS, Operating Systems',
+      'Published research on microservices optimization',
+      'Led technical workshops on Docker and Kubernetes',
+    ],
+    tech: ['C++', 'Python', 'System Design', 'Algorithms'],
+  },
+];
+
+export default function Experience() {
+  return (
+    <section id="experience" className="min-h-screen py-20 px-4 relative bg-black">
+      <motion.div
+        className="max-w-5xl mx-auto"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+      >
+        <motion.h2
+          className="text-5xl md:text-6xl font-bold mb-6 text-center"
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          My <span className="text-gradient">Journey</span>
+        </motion.h2>
+
+        <motion.p
+          className="text-xl text-gray-400 text-center mb-16"
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+        >
+          From classroom to production systems
+        </motion.p>
+
+        <div className="relative">
+          {/* Timeline line */}
+          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-600 via-blue-600 to-pink-600" />
+
+          <div className="space-y-12">
+            {timeline.map((item, index) => (
+              <motion.div
+                key={index}
+                className="relative pl-20"
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+              >
+                {/* Icon */}
+                <div className="absolute left-4 top-0 p-2 bg-purple-600 rounded-full">
+                  <item.icon className="w-6 h-6 text-white" />
+                </div>
+
+                <motion.div
+                  className="glass p-6 rounded-xl hover:glow transition-all duration-300"
+                  whileHover={{ scale: 1.02 }}
+                >
+                  <div className="flex flex-wrap items-start justify-between mb-4">
+                    <div>
+                      <h3 className="text-2xl font-bold text-white">{item.title}</h3>
+                      <p className="text-purple-400 font-semibold">{item.company}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-gray-400 text-sm">{item.period}</p>
+                      <p className="text-gray-500 text-sm">{item.location}</p>
+                    </div>
+                  </div>
+
+                  <p className="text-gray-300 mb-4">{item.description}</p>
+
+                  <ul className="space-y-2 mb-4">
+                    {item.achievements.map((achievement, i) => (
+                      <li key={i} className="flex items-start gap-2 text-gray-400 text-sm">
+                        <span className="text-purple-400 mt-1">▹</span>
+                        {achievement}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="flex flex-wrap gap-2">
+                    {item.tech.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1 bg-purple-600/20 text-purple-300 rounded-full text-xs font-semibold"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </section>
+  );
+}
