@@ -57,7 +57,7 @@ const timeline = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="min-h-screen py-20 px-4 relative bg-black">
+    <section id="experience" className="min-h-screen py-20 px-4 relative bg-black dark:bg-black light:bg-gray-50">
       <motion.div
         className="max-w-5xl mx-auto"
         initial={{ opacity: 0 }}
@@ -65,7 +65,7 @@ export default function Experience() {
         viewport={{ once: true }}
       >
         <motion.h2
-          className="text-5xl md:text-6xl font-bold mb-6 text-center"
+          className="text-5xl md:text-6xl font-bold mb-6 text-center text-white dark:text-white light:text-gray-900"
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
@@ -74,7 +74,7 @@ export default function Experience() {
         </motion.h2>
 
         <motion.p
-          className="text-xl text-gray-400 text-center mb-16"
+          className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-600 text-center mb-16"
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
@@ -98,7 +98,7 @@ export default function Experience() {
                 transition={{ delay: index * 0.2 }}
               >
                 {/* Icon */}
-                <div className="absolute left-4 top-0 p-2 bg-purple-600 rounded-full">
+                <div className="absolute left-4 top-0 p-2 bg-purple-600 rounded-full shadow-lg">
                   <item.icon className="w-6 h-6 text-white" />
                 </div>
 
@@ -106,23 +106,38 @@ export default function Experience() {
                   className="glass p-6 rounded-xl hover:glow transition-all duration-300"
                   whileHover={{ scale: 1.02 }}
                 >
-                  <div className="flex flex-wrap items-start justify-between mb-4">
+                  <div className="flex flex-wrap items-start justify-between mb-4 gap-4">
                     <div>
-                      <h3 className="text-2xl font-bold text-white">{item.title}</h3>
-                      <p className="text-purple-400 font-semibold">{item.company}</p>
+                      <h3 className="text-2xl font-bold text-white dark:text-white light:text-gray-900">
+                        {item.title}
+                      </h3>
+                      <p className="text-purple-400 dark:text-purple-400 light:text-purple-600 font-semibold">
+                        {item.company}
+                      </p>
                     </div>
                     <div className="text-right">
-                      <p className="text-gray-400 text-sm">{item.period}</p>
-                      <p className="text-gray-500 text-sm">{item.location}</p>
+                      <p className="text-gray-400 dark:text-gray-400 light:text-gray-600 text-sm">
+                        {item.period}
+                      </p>
+                      <p className="text-gray-500 dark:text-gray-500 light:text-gray-500 text-sm">
+                        {item.location}
+                      </p>
                     </div>
                   </div>
 
-                  <p className="text-gray-300 mb-4">{item.description}</p>
+                  <p className="text-gray-300 dark:text-gray-300 light:text-gray-700 mb-4">
+                    {item.description}
+                  </p>
 
                   <ul className="space-y-2 mb-4">
                     {item.achievements.map((achievement, i) => (
-                      <li key={i} className="flex items-start gap-2 text-gray-400 text-sm">
-                        <span className="text-purple-400 mt-1">▹</span>
+                      <li
+                        key={i}
+                        className="flex items-start gap-2 text-gray-400 dark:text-gray-400 light:text-gray-600 text-sm"
+                      >
+                        <span className="text-purple-400 dark:text-purple-400 light:text-purple-600 mt-1">
+                          ▹
+                        </span>
                         {achievement}
                       </li>
                     ))}
@@ -132,7 +147,7 @@ export default function Experience() {
                     {item.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 bg-purple-600/20 text-purple-300 rounded-full text-xs font-semibold"
+                        className="px-3 py-1 bg-purple-600/20 dark:bg-purple-600/20 light:bg-purple-100 text-purple-300 dark:text-purple-300 light:text-purple-700 rounded-full text-xs font-semibold"
                       >
                         {tech}
                       </span>

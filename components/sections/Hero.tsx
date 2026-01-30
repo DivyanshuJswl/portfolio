@@ -7,7 +7,7 @@ import Scene from '@/components/3d/Scene';
 
 export default function Hero() {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black dark:bg-black">
       <Scene section="hero" />
       
       <div className="relative z-20 text-center px-4 max-w-6xl mx-auto">
@@ -26,7 +26,7 @@ export default function Hero() {
           </motion.h1>
           
           <motion.p
-            className="text-xl md:text-2xl lg:text-3xl text-gray-200 mb-4 font-semibold"
+            className="text-xl md:text-2xl lg:text-3xl text-gray-200 dark:text-gray-200 mb-4 font-semibold"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -35,13 +35,13 @@ export default function Hero() {
           </motion.p>
           
           <motion.p
-            className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto mb-8"
+            className="text-base md:text-lg text-gray-300 dark:text-gray-300 max-w-2xl mx-auto mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
           >
             Building scalable microservices with Go, Kafka & Docker at{' '}
-            <span className="text-blue-400 font-semibold">Zopsmart</span>
+            <span className="text-blue-400 dark:text-blue-400 font-semibold">Zopsmart</span>
           </motion.p>
 
           <motion.div
@@ -61,7 +61,7 @@ export default function Hero() {
                 const event = new CustomEvent('toggleChat');
                 window.dispatchEvent(event);
               }}
-              className="px-8 py-3 border-2 border-gray-500 rounded-full font-semibold hover:border-purple-500 hover:text-purple-400 transition-all duration-300 text-white"
+              className="px-8 py-3 border-2 border-gray-500 dark:border-gray-500 rounded-full font-semibold hover:border-purple-500 hover:text-purple-400 dark:hover:text-purple-400 transition-all duration-300 text-white dark:text-white"
             >
               Chat with AI Me
             </button>
@@ -73,12 +73,12 @@ export default function Hero() {
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
         >
-          <ArrowDown className="w-8 h-8 text-gray-300" />
+          <ArrowDown className="w-8 h-8 text-gray-300 dark:text-gray-300" />
         </motion.div>
       </div>
 
-      {/* Gradient overlay for better text visibility */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black pointer-events-none z-10" />
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black dark:from-black/40 dark:via-black/60 dark:to-black pointer-events-none z-10" />
     </section>
   );
 }

@@ -16,14 +16,13 @@
   body {
     @apply bg-black text-white;
     font-feature-settings: "rlig" 1, "calt" 1;
-    background-color: #000000 !important;
   }
 
   html {
     scroll-behavior: smooth;
   }
 
-  /* Custom scrollbar */
+  /* Custom scrollbar - Dark Mode */
   ::-webkit-scrollbar {
     width: 10px;
   }
@@ -41,17 +40,52 @@
   }
 }
 
+/* ===== LIGHT MODE OVERRIDES ===== */
+html.light {
+  color-scheme: light;
+}
+
+html.light body {
+  @apply bg-white text-gray-900;
+}
+
+html.light * {
+  @apply border-gray-200;
+}
+
+html.light ::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  @apply bg-purple-400;
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
+  @apply bg-purple-500;
+}
+
 @layer utilities {
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500;
   }
 
+  /* Glass effect */
   .glass {
     @apply bg-gray-900/50 backdrop-blur-md border border-gray-800;
   }
 
+  html.light .glass {
+    @apply bg-white/70 backdrop-blur-md border border-gray-200 shadow-lg;
+  }
+
+  /* Glow effect */
   .glow {
     box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+  }
+
+  html.light .glow {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.15);
   }
 
   .animate-float {
@@ -70,21 +104,60 @@
   .animate-pulse-slow {
     animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
+
+  /* Scrollbar for chat */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-purple-600 rounded-full;
+  }
+
+  html.light .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-purple-400 rounded-full;
+  }
 }
 
-/* Light mode */
-[data-theme="light"] body {
-  @apply bg-white text-gray-900;
+/* Selection color */
+::selection {
+  @apply bg-purple-600 text-white;
 }
 
-[data-theme="light"] .glass {
-  @apply bg-white/50 backdrop-blur-md border border-gray-200;
+html.light ::selection {
+  @apply bg-purple-400 text-white;
 }
 
-[data-theme="light"] ::-webkit-scrollbar-track {
-  @apply bg-gray-100;
+::-moz-selection {
+  @apply bg-purple-600 text-white;
 }
 
-[data-theme="light"] ::-webkit-scrollbar-thumb {
-  @apply bg-purple-400;
+html.light ::-moz-selection {
+  @apply bg-purple-400 text-white;
+}
+
+/* Focus visible */
+*:focus-visible {
+  @apply outline-2 outline-offset-2 outline-purple-500;
+}
+
+html.light *:focus-visible {
+  @apply outline-purple-600;
+}
+
+/* Smooth transitions */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  * {
+    transition-property: background-color, border-color, color;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+  }
 }
