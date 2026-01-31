@@ -14,35 +14,34 @@ export default function ThemeToggle() {
     setMounted(true);
   }, []);
 
-  if (!mounted) {
-    return (
-      <div className="fixed top-6 right-6 z-50 p-3 rounded-full bg-gray-800/80 backdrop-blur-sm border border-gray-700 w-[52px] h-[52px]" />
-    );
-  }
+  if (!mounted) return null; // Avoid hydration mismatch by rendering nothing initially
 
   const currentTheme = theme === 'system' ? systemTheme : theme;
-
-  const toggleTheme = () => {
-    setTheme(currentTheme === 'dark' ? 'light' : 'dark');
-  };
+  const toggleTheme = () => setTheme(currentTheme === 'dark' ? 'light' : 'dark');
 
   return (
     <motion.button
       onClick={toggleTheme}
-      className="fixed top-6 right-6 z-50 p-3 rounded-full bg-gray-800/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-700 dark:border-gray-700 hover:border-purple-500 transition-colors"
-      whileHover={{ scale: 1.1 }}
+      className="fixed top-24 right-6 md:top-6 md:right-6 z-40 p-3 rounded-full 
+                 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md 
+                 border border-slate-200 dark:border-slate-800 
+                 text-slate-600 dark:text-slate-300
+                 hover:border-indigo-500 dark:hover:border-indigo-400 
+                 hover:text-indigo-600 dark:hover:text-indigo-400
+                 shadow-sm transition-all duration-300"
+      whileHover={{ scale: 1.1, rotate: 15 }}
       whileTap={{ scale: 0.95 }}
       aria-label="Toggle theme"
     >
       <motion.div
-        initial={{ rotate: 0 }}
+        initial={false}
         animate={{ rotate: currentTheme === 'dark' ? 0 : 180 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.5, type: "spring" }}
       >
         {currentTheme === 'dark' ? (
-          <Sun className="w-5 h-5 text-yellow-400" />
+          <Sun className="w-5 h-5" />
         ) : (
-          <Moon className="w-5 h-5 text-purple-600" />
+          <Moon className="w-5 h-5" />
         )}
       </motion.div>
     </motion.button>

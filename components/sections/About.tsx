@@ -29,11 +29,11 @@ const highlights = [
 
 export default function About() {
   return (
-    <section id="about" className="min-h-screen py-20 px-4 relative overflow-hidden bg-gradient-to-b from-black via-gray-900 to-black dark:from-black dark:via-gray-900 dark:to-black">
-      {/* Animated Background gradient orbs */}
+    <section id="about" className="min-h-screen py-20 px-4 relative overflow-hidden transition-colors duration-300 bg-gradient-to-b from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-[#0B1120] dark:to-black">
+      {/* Animated Background gradient orbs - Updated to Indigo/Teal */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-purple-600/20 dark:bg-purple-600/20 rounded-full blur-3xl"
+          className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             x: [0, 100, 0],
@@ -46,7 +46,7 @@ export default function About() {
           }}
         />
         <motion.div
-          className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-600/20 dark:bg-blue-600/20 rounded-full blur-3xl"
+          className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-teal-500/10 dark:bg-teal-500/20 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.3, 1],
             x: [0, -100, 0],
@@ -60,7 +60,7 @@ export default function About() {
           }}
         />
         <motion.div
-          className="absolute top-1/2 right-1/3 w-[400px] h-[400px] bg-pink-600/15 dark:bg-pink-600/15 rounded-full blur-3xl"
+          className="absolute top-1/2 right-1/3 w-[400px] h-[400px] bg-blue-500/10 dark:bg-indigo-600/15 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.4, 1],
             x: [0, 80, 0],
@@ -83,7 +83,7 @@ export default function About() {
         transition={{ duration: 0.6 }}
       >
         <motion.h2
-          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-center text-white dark:text-white"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-center text-slate-900 dark:text-white"
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
@@ -92,7 +92,7 @@ export default function About() {
         </motion.h2>
 
         <motion.p
-          className="text-lg md:text-xl text-gray-300 dark:text-gray-300 text-center mb-16 max-w-3xl mx-auto"
+          className="text-lg md:text-xl text-slate-600 dark:text-slate-400 text-center mb-16 max-w-3xl mx-auto"
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
@@ -106,7 +106,7 @@ export default function About() {
           {highlights.map((item, index) => (
             <motion.div
               key={item.title}
-              className="glass p-8 rounded-2xl hover:glow transition-all duration-300 group"
+              className="glass p-8 rounded-2xl hover:glow transition-all duration-300 group bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -114,14 +114,14 @@ export default function About() {
               whileHover={{ scale: 1.02 }}
             >
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-purple-600/20 dark:bg-purple-600/20 rounded-lg group-hover:bg-purple-600/30 dark:group-hover:bg-purple-600/30 transition-colors">
-                  <item.icon className="w-8 h-8 text-purple-400 dark:text-purple-400" />
+                <div className="p-3 bg-indigo-50 dark:bg-indigo-500/20 rounded-lg group-hover:bg-indigo-100 dark:group-hover:bg-indigo-500/30 transition-colors">
+                  <item.icon className="w-8 h-8 text-indigo-600 dark:text-indigo-400" />
                 </div>
                 <div>
-                  <h3 className="text-xl md:text-2xl font-bold mb-2 group-hover:text-purple-400 dark:group-hover:text-purple-400 transition-colors text-white dark:text-white">
+                  <h3 className="text-xl md:text-2xl font-bold mb-2 text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-gray-300 dark:text-gray-300 leading-relaxed">{item.description}</p>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{item.description}</p>
                 </div>
               </div>
             </motion.div>
@@ -146,7 +146,7 @@ export default function About() {
               <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-gradient mb-2">
                 {stat.value}
               </div>
-              <div className="text-sm text-gray-400 dark:text-gray-400">{stat.label}</div>
+              <div className="text-sm text-slate-500 dark:text-slate-500">{stat.label}</div>
             </div>
           ))}
         </motion.div>

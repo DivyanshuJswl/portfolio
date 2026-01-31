@@ -3,23 +3,39 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
-import MagneticButton from '@/components/interactive/MagneticButton';
+import { Menu, X, Code2, User, Briefcase, Mail, Cpu } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 const navItems = [
-  { label: 'About', href: '#about' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Lab', href: '#lab' },
-  { label: 'Contact', href: '#contact' },
+  { name: 'Home', href: '#', icon: Code2 },
+  { name: 'About', href: '#about', icon: User },
+  { name: 'Experience', href: '#experience', icon: Briefcase },
+  { name: 'Lab', href: '#lab', icon: Cpu },
+  { name: 'Contact', href: '#contact', icon: Mail },
 ];
 
 export default function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('Home');
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 50);
+      
+      // Update active section based on scroll position
+      const sections = navItems.map(item => item.href.substring(1)).filter(Boolean);
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            setActiveSection(navItems.find(item => item.href === `#${section}`)?.name || 'Home');
+            break;
+          }
+        }
+      }
+      if (window.scrollY < 100) setActiveSection('Home');
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -27,88 +43,108 @@ export default function Navigation() {
   }, []);
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled ? 'glass shadow-lg' : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
+    <>
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+          scrolled 
+            ? 'py-4 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm' 
+            : 'py-6 bg-transparent'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+          
           {/* Logo */}
-          <motion.a
-            href="#"
-            className="text-2xl font-bold text-gradient"
-            whileHover={{ scale: 1.05 }}
-          >
-            DJ
-          </motion.a>
+          <a href="#" className="relative group z-50">
+            <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-teal-500 dark:from-indigo-400 dark:to-cyan-400">
+              DJ<span className="text-slate-900 dark:text-white">.</span>
+            </span>
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 dark:bg-indigo-400 transition-all duration-300 group-hover:w-full" />
+          </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <MagneticButton key={item.label}>
+          <div className="hidden md:flex items-center gap-1">
+            <div className="flex items-center gap-1 px-4 py-2 rounded-full bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 backdrop-blur-sm">
+              {navItems.map((item) => (
                 <a
+                  key={item.name}
                   href={item.href}
-                  className="text-gray-300 hover:text-white transition-colors relative group"
+                  onClick={() => setActiveSection(item.name)}
+                  className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                    activeSection === item.name
+                      ? 'text-white'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400'
+                  }`}
                 >
-                  {item.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 transition-all duration-300 group-hover:w-full" />
+                  {activeSection === item.name && (
+                    <motion.div
+                      layoutId="nav-pill"
+                      className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-blue-600 rounded-full shadow-lg shadow-indigo-500/30"
+                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{item.name}</span>
                 </a>
-              </MagneticButton>
-            ))}
-            <MagneticButton>
-              <a
-                href="#contact"
-                className="px-6 py-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
-              >
-                Let's Talk
-              </a>
-            </MagneticButton>
+              ))}
+            </div>
+            
+            <div className="ml-4 pl-4 border-l border-slate-200 dark:border-slate-800">
+              {/* Theme Toggle is now handled here for desktop */}
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-gray-300 hover:text-white transition-colors"
+            className="md:hidden relative z-50 p-2 text-slate-900 dark:text-white"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
-      </div>
+      </motion.nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
-        {isMobileMenuOpen && (
+        {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass border-t border-gray-700"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed inset-0 z-30 md:hidden bg-slate-50 dark:bg-slate-950"
           >
-            <div className="px-4 py-6 space-y-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
+            <div className="flex flex-col items-center justify-center h-full space-y-8">
+              {navItems.map((item, idx) => (
+                <motion.a
+                  key={item.name}
                   href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block text-gray-300 hover:text-white transition-colors py-2"
+                  onClick={() => setIsOpen(false)}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="flex items-center gap-4 text-2xl font-medium text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400"
                 >
-                  {item.label}
-                </a>
+                  <item.icon className="w-6 h-6" />
+                  {item.name}
+                </motion.a>
               ))}
-              <a
-                href="#contact"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-center px-6 py-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full font-semibold"
+              
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="mt-8"
               >
-                Let's Talk
-              </a>
+                {/* Mobile Theme Toggle Placeholder - The fixed toggle handles this usually, 
+                    but you can add specific mobile controls here if needed */}
+              </motion.div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </>
   );
 }

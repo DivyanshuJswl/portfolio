@@ -6,22 +6,19 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  darkMode: 'class', // Changed from array to just 'class'
+  darkMode: 'class', 
   theme: {
     extend: {
       fontFamily: {
         sans: ['var(--font-inter)'],
         display: ['var(--font-space-grotesk)'],
       },
+      colors: {
+        // We rely on standard Slate/Indigo/Teal, but you can alias them here if you want "brand" names
+        // brand: colors.indigo,
+      },
       animation: {
         'float': 'float 6s ease-in-out infinite',
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-      },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
-        },
       },
     },
   },

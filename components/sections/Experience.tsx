@@ -56,11 +56,11 @@ const timeline = [
 ];
 export default function Experience() {
   return (
-    <section id="experience" className="min-h-screen py-20 px-4 relative bg-gradient-to-b from-black via-gray-900 to-black dark:from-black dark:via-gray-900 dark:to-black overflow-hidden">
+    <section id="experience" className="min-h-screen py-20 px-4 relative transition-colors duration-300 bg-gradient-to-b from-slate-100 via-white to-slate-50 dark:from-black dark:via-[#0B1120] dark:to-slate-950 overflow-hidden">
       {/* Animated Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-purple-600/15 dark:bg-purple-600/15 rounded-full blur-3xl"
+          className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-indigo-500/10 dark:bg-indigo-500/15 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.3, 1],
             x: [0, -50, 0],
@@ -73,7 +73,7 @@ export default function Experience() {
           }}
         />
         <motion.div
-          className="absolute bottom-1/3 left-1/4 w-[350px] h-[350px] bg-blue-600/15 dark:bg-blue-600/15 rounded-full blur-3xl"
+          className="absolute bottom-1/3 left-1/4 w-[350px] h-[350px] bg-teal-500/10 dark:bg-teal-500/15 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             x: [0, 60, 0],
@@ -94,7 +94,7 @@ export default function Experience() {
         viewport={{ once: true }}
       >
         <motion.h2
-          className="text-5xl md:text-6xl font-bold mb-6 text-center text-white dark:text-white light:text-gray-900"
+          className="text-5xl md:text-6xl font-bold mb-6 text-center text-slate-900 dark:text-white"
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
@@ -103,7 +103,7 @@ export default function Experience() {
         </motion.h2>
 
         <motion.p
-          className="text-xl text-gray-400 dark:text-gray-400 light:text-gray-600 text-center mb-16"
+          className="text-xl text-slate-600 dark:text-slate-400 text-center mb-16"
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
@@ -113,8 +113,8 @@ export default function Experience() {
         </motion.p>
 
         <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-600 via-blue-600 to-pink-600" />
+          {/* Timeline line - Indigo to Teal Gradient */}
+          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-indigo-500 via-blue-500 to-teal-500" />
 
           <div className="space-y-12">
             {timeline.map((item, index) => (
@@ -127,34 +127,34 @@ export default function Experience() {
                 transition={{ delay: index * 0.2 }}
               >
                 {/* Icon */}
-                <div className="absolute left-4 top-0 p-2 bg-purple-600 rounded-full shadow-lg">
+                <div className="absolute left-4 top-0 p-2 bg-indigo-600 dark:bg-indigo-600 rounded-full shadow-lg shadow-indigo-500/30">
                   <item.icon className="w-6 h-6 text-white" />
                 </div>
 
                 <motion.div
-                  className="glass p-6 rounded-xl hover:glow transition-all duration-300"
+                  className="glass p-6 rounded-xl hover:glow transition-all duration-300 bg-white/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800"
                   whileHover={{ scale: 1.02 }}
                 >
                   <div className="flex flex-wrap items-start justify-between mb-4 gap-4">
                     <div>
-                      <h3 className="text-2xl font-bold text-white dark:text-white light:text-gray-900">
+                      <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
                         {item.title}
                       </h3>
-                      <p className="text-purple-400 dark:text-purple-400 light:text-purple-600 font-semibold">
+                      <p className="text-indigo-600 dark:text-indigo-400 font-semibold">
                         {item.company}
                       </p>
                     </div>
                     <div className="text-right">
-                      <p className="text-gray-400 dark:text-gray-400 light:text-gray-600 text-sm">
+                      <p className="text-slate-500 dark:text-slate-400 text-sm">
                         {item.period}
                       </p>
-                      <p className="text-gray-500 dark:text-gray-500 light:text-gray-500 text-sm">
+                      <p className="text-slate-500 dark:text-slate-500 text-sm">
                         {item.location}
                       </p>
                     </div>
                   </div>
 
-                  <p className="text-gray-300 dark:text-gray-300 light:text-gray-700 mb-4">
+                  <p className="text-slate-600 dark:text-slate-300 mb-4">
                     {item.description}
                   </p>
 
@@ -162,9 +162,9 @@ export default function Experience() {
                     {item.achievements.map((achievement, i) => (
                       <li
                         key={i}
-                        className="flex items-start gap-2 text-gray-400 dark:text-gray-400 light:text-gray-600 text-sm"
+                        className="flex items-start gap-2 text-slate-600 dark:text-slate-400 text-sm"
                       >
-                        <span className="text-purple-400 dark:text-purple-400 light:text-purple-600 mt-1">
+                        <span className="text-indigo-500 dark:text-indigo-400 mt-1">
                           ▹
                         </span>
                         {achievement}
@@ -176,7 +176,7 @@ export default function Experience() {
                     {item.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 bg-purple-600/20 dark:bg-purple-600/20 light:bg-purple-100 text-purple-300 dark:text-purple-300 light:text-purple-700 rounded-full text-xs font-semibold"
+                        className="px-3 py-1 bg-indigo-50 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-500/30 rounded-full text-xs font-semibold"
                       >
                         {tech}
                       </span>

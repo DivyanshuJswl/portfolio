@@ -10,82 +10,54 @@
 
 @layer base {
   * {
-    @apply border-gray-800;
+    @apply border-slate-200 dark:border-slate-800;
   }
   
   body {
-    @apply bg-black text-white;
+    /* FIXED: Use Slate-50 for Light, Slate-950 for Dark. 
+       This removes the harsh "flash" when toggling themes. */
+    @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100;
     font-feature-settings: "rlig" 1, "calt" 1;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   html {
     scroll-behavior: smooth;
   }
 
-  /* Custom scrollbar - Dark Mode */
+  /* Custom scrollbar - Matches new Indigo Theme */
   ::-webkit-scrollbar {
     width: 10px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-gray-900;
+    @apply bg-slate-200 dark:bg-slate-900;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-purple-600 rounded-full;
+    @apply bg-indigo-500/50 hover:bg-indigo-600 rounded-full transition-colors;
   }
-
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-purple-500;
-  }
-}
-
-/* ===== LIGHT MODE OVERRIDES ===== */
-html.light {
-  color-scheme: light;
-}
-
-html.light body {
-  @apply bg-white text-gray-900;
-}
-
-html.light * {
-  @apply border-gray-200;
-}
-
-html.light ::-webkit-scrollbar-track {
-  @apply bg-gray-100;
-}
-
-html.light ::-webkit-scrollbar-thumb {
-  @apply bg-purple-400;
-}
-
-html.light ::-webkit-scrollbar-thumb:hover {
-  @apply bg-purple-500;
 }
 
 @layer utilities {
+  /* NEW: Professional Gradient (Indigo -> Teal) */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-blue-600 to-teal-500 dark:from-indigo-400 dark:via-cyan-400 dark:to-teal-400;
   }
 
-  /* Glass effect */
+  /* Refined Glass Effect */
   .glass {
-    @apply bg-gray-900/50 backdrop-blur-md border border-gray-800;
+    @apply bg-white/70 backdrop-blur-md border border-slate-200 shadow-sm
+           dark:bg-slate-900/60 dark:border-slate-800 dark:shadow-none;
   }
 
-  html.light .glass {
-    @apply bg-white/70 backdrop-blur-md border border-gray-200 shadow-lg;
-  }
-
-  /* Glow effect */
+  /* Refined Glow (Indigo based) */
   .glow {
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.15); /* Indigo glow */
   }
 
-  html.light .glow {
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.15);
+  .dark .glow {
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
   }
 
   .animate-float {
@@ -93,71 +65,12 @@ html.light ::-webkit-scrollbar-thumb:hover {
   }
 
   @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-  }
-
-  .animate-pulse-slow {
-    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-
-  /* Scrollbar for chat */
-  .scrollbar-thin::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  .scrollbar-thin::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  .scrollbar-thin::-webkit-scrollbar-thumb {
-    @apply bg-purple-600 rounded-full;
-  }
-
-  html.light .scrollbar-thin::-webkit-scrollbar-thumb {
-    @apply bg-purple-400 rounded-full;
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
   }
 }
 
-/* Selection color */
+/* Selection color - Professional Indigo */
 ::selection {
-  @apply bg-purple-600 text-white;
-}
-
-html.light ::selection {
-  @apply bg-purple-400 text-white;
-}
-
-::-moz-selection {
-  @apply bg-purple-600 text-white;
-}
-
-html.light ::-moz-selection {
-  @apply bg-purple-400 text-white;
-}
-
-/* Focus visible */
-*:focus-visible {
-  @apply outline-2 outline-offset-2 outline-purple-500;
-}
-
-html.light *:focus-visible {
-  @apply outline-purple-600;
-}
-
-/* Smooth transitions */
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  * {
-    transition-property: background-color, border-color, color;
-    transition-duration: 200ms;
-    transition-timing-function: ease-in-out;
-  }
+  @apply bg-indigo-500/30 text-indigo-900 dark:text-white;
 }
