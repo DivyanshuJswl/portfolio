@@ -1,12 +1,16 @@
 // components/ui/ThemeToggle.tsx
-'use client';
+"use client";
 
-import { Moon, Sun } from 'lucide-react';
-import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
-export default function ThemeToggle({ className = '' }: { className?: string }) {
+export default function ThemeToggle({
+  className = "",
+}: {
+  className?: string;
+}) {
   const { theme, setTheme, systemTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -16,8 +20,9 @@ export default function ThemeToggle({ className = '' }: { className?: string }) 
 
   if (!mounted) return <div className={`w-[46px] h-[46px] ${className}`} />;
 
-  const currentTheme = theme === 'system' ? systemTheme : theme;
-  const toggleTheme = () => setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+  const currentTheme = theme === "system" ? systemTheme : theme;
+  const toggleTheme = () =>
+    setTheme(currentTheme === "dark" ? "light" : "dark");
 
   return (
     <motion.button
@@ -35,10 +40,10 @@ export default function ThemeToggle({ className = '' }: { className?: string }) 
     >
       <motion.div
         initial={false}
-        animate={{ rotate: currentTheme === 'dark' ? 0 : 180 }}
+        animate={{ rotate: currentTheme === "dark" ? 0 : 180 }}
         transition={{ duration: 0.5, type: "spring" }}
       >
-        {currentTheme === 'dark' ? (
+        {currentTheme === "dark" ? (
           <Sun className="w-5 h-5" />
         ) : (
           <Moon className="w-5 h-5" />

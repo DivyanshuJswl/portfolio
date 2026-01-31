@@ -1,8 +1,8 @@
 // components/ErrorBoundary.tsx
-'use client';
+"use client";
 
-import { Component, ReactNode } from 'react';
-import { motion } from 'framer-motion';
+import { Component, ReactNode } from "react";
+import { motion } from "framer-motion";
 
 interface Props {
   children: ReactNode;
@@ -25,7 +25,7 @@ export default class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: any) {
-    console.error('Error caught by boundary:', error, errorInfo);
+    console.error("Error caught by boundary:", error, errorInfo);
   }
 
   render() {
@@ -38,9 +38,12 @@ export default class ErrorBoundary extends Component<Props, State> {
               animate={{ opacity: 1, y: 0 }}
               className="text-center max-w-md"
             >
-              <h2 className="text-3xl font-bold mb-4 text-red-500">Oops! Something went wrong</h2>
+              <h2 className="text-3xl font-bold mb-4 text-red-500">
+                Oops! Something went wrong
+              </h2>
               <p className="text-gray-400 mb-6">
-                Don't worry, it's not you - it's me. Please refresh the page or try again later.
+                Don&apos;t worry, it&apos;s not you - it&apos;s me. Please refresh the page or
+                try again later.
               </p>
               <button
                 onClick={() => window.location.reload()}

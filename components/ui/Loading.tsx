@@ -1,7 +1,7 @@
 // components/ui/Loading.tsx
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 export default function Loading() {
   return (
@@ -13,13 +13,13 @@ export default function Loading() {
           animate={{ rotate: 360 }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
         />
-        
+
         {/* Inner Pulse */}
         <motion.div
           className="absolute inset-0 m-auto w-8 h-8 rounded-full bg-gradient-to-r from-indigo-500 to-teal-500"
-          animate={{ 
+          animate={{
             scale: [0.8, 1.2, 0.8],
-            opacity: [0.5, 1, 0.5] 
+            opacity: [0.5, 1, 0.5],
           }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
         />

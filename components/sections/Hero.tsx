@@ -1,31 +1,33 @@
 // components/sections/Hero.tsx
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { ArrowDown, Terminal, Server } from 'lucide-react';
-import Scene from '@/components/3d/Scene';
+import { motion } from "framer-motion";
+import { ArrowDown, Terminal, Server } from "lucide-react";
+import Scene from "@/components/3d/Scene";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
 const staggerContainer = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.1 } }
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2, delayChildren: 0.1 },
+  },
 };
 
 export default function Hero() {
   return (
     <section className="relative min-h-screen w-full overflow-x-hidden bg-transparent">
-      
       {/* Layout */}
       <div className="relative z-10 w-full min-h-screen flex flex-col lg:grid lg:grid-cols-2">
         {/* Left: Robot */}
         <div className="relative w-full h-[450px] lg:h-full order-1 lg:order-1 flex items-center justify-center">
-           <div className="w-full h-full relative">
-              <Scene section="hero" />
-           </div>
+          <div className="w-full h-full relative">
+            <Scene section="hero" />
+          </div>
         </div>
 
         {/* Right: Text */}
@@ -38,7 +40,7 @@ export default function Hero() {
             className="max-w-2xl"
           >
             {/* Status Badge - Glass Style */}
-            <motion.div 
+            <motion.div
               variants={fadeInUp}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 border backdrop-blur-md bg-white/30 border-white/20 dark:bg-slate-800/30 dark:border-white/10 shadow-lg"
             >
@@ -51,7 +53,7 @@ export default function Hero() {
               </span>
             </motion.div>
 
-            <motion.h1 
+            <motion.h1
               variants={fadeInUp}
               className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 text-slate-900 dark:text-white"
             >
@@ -60,7 +62,7 @@ export default function Hero() {
                 Jaiswal
               </span>
             </motion.h1>
-            
+
             <motion.div
               variants={fadeInUp}
               className="text-lg sm:text-xl md:text-2xl mb-8 font-light flex flex-wrap justify-center lg:justify-start gap-3 items-center text-slate-700 dark:text-slate-300"
@@ -70,13 +72,24 @@ export default function Hero() {
               <span className="text-slate-400 hidden sm:inline">|</span>
               <span>System Architect</span>
             </motion.div>
-            
+
             <motion.p
               variants={fadeInUp}
               className="text-base sm:text-lg mb-10 leading-relaxed max-w-lg mx-auto lg:mx-0 text-slate-600 dark:text-slate-400"
             >
-              Building scalable microservices and high-throughput systems. 
-              Currently optimizing data streams at <span className="font-semibold text-slate-900 dark:text-white">Zopsmart</span> with <span className="text-indigo-600 dark:text-cyan-300">Go</span>, <span className="text-indigo-600 dark:text-indigo-300">Kafka</span>, and <span className="text-indigo-600 dark:text-blue-300">Docker</span>.
+              Building scalable microservices and high-throughput systems.
+              Currently optimizing data streams at{" "}
+              <span className="font-semibold text-slate-900 dark:text-white">
+                Zopsmart
+              </span>{" "}
+              with{" "}
+              <span className="text-indigo-600 dark:text-cyan-300">Go</span>,{" "}
+              <span className="text-indigo-600 dark:text-indigo-300">
+                Kafka
+              </span>
+              , and{" "}
+              <span className="text-indigo-600 dark:text-blue-300">Docker</span>
+              .
             </motion.p>
 
             <motion.div
@@ -89,9 +102,9 @@ export default function Hero() {
               >
                 View Projects
               </a>
-              <button 
+              <button
                 onClick={() => {
-                  const event = new CustomEvent('toggleChat');
+                  const event = new CustomEvent("toggleChat");
                   window.dispatchEvent(event);
                 }}
                 className="px-8 py-4 rounded-xl font-semibold transition-all duration-300 backdrop-blur-md min-w-[160px] border bg-white/40 border-white/40 text-slate-800 hover:bg-white hover:border-white dark:bg-white/5 dark:border-white/10 dark:text-white dark:hover:bg-white/10"

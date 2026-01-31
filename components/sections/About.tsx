@@ -1,35 +1,42 @@
 // components/sections/About.tsx
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { Code2, Cpu, Rocket, Award } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Code2, Cpu, Rocket, Award } from "lucide-react";
 
 const highlights = [
   {
     icon: Code2,
-    title: 'Backend Specialist',
-    description: 'Expert in Go, building high-performance microservices with Apache Kafka for real-time event streaming',
+    title: "Backend Specialist",
+    description:
+      "Expert in Go, building high-performance microservices with Apache Kafka for real-time event streaming",
   },
   {
     icon: Cpu,
-    title: 'System Architect',
-    description: 'Designing scalable distributed systems with Docker, Podman, and modern containerization practices',
+    title: "System Architect",
+    description:
+      "Designing scalable distributed systems with Docker, Podman, and modern containerization practices",
   },
   {
     icon: Rocket,
-    title: 'Full-Stack Builder',
-    description: 'MERN stack enthusiast with production experience in building end-to-end applications',
+    title: "Full-Stack Builder",
+    description:
+      "MERN stack enthusiast with production experience in building end-to-end applications",
   },
   {
     icon: Award,
-    title: 'Problem Solver',
-    description: 'Competitive programmer with strong foundation in C++ and algorithmic thinking',
+    title: "Problem Solver",
+    description:
+      "Competitive programmer with strong foundation in C++ and algorithmic thinking",
   },
 ];
 
 export default function About() {
   return (
-    <section id="about" className="min-h-screen py-20 px-4 relative bg-transparent">
+    <section
+      id="about"
+      className="min-h-screen py-20 px-4 relative bg-transparent"
+    >
       <motion.div
         className="max-w-6xl mx-auto relative z-10"
         initial={{ opacity: 0 }}
@@ -43,7 +50,10 @@ export default function About() {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
         >
-          About <span className="text-gradient">Me</span>
+          About{" "}
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-teal-500 dark:from-indigo-400 dark:to-cyan-400">
+            Me
+          </span>
         </motion.h2>
 
         <motion.p
@@ -53,8 +63,9 @@ export default function About() {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          A passionate backend engineer currently crafting scalable microservices at Zopsmart. 
-          I transform complex business logic into elegant, performant systems that power modern applications.
+          A passionate backend engineer currently crafting scalable
+          microservices at Zopsmart. I transform complex business logic into
+          elegant, performant systems that power modern applications.
         </motion.p>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -95,16 +106,18 @@ export default function About() {
           transition={{ delay: 0.4 }}
         >
           {[
-            { label: 'Years Experience', value: '2+' },
-            { label: 'Projects Delivered', value: '10+' },
-            { label: 'Tech Stack', value: '15+' },
-            { label: 'Code Commits', value: '1000+' },
+            { label: "Years Experience", value: "2+" },
+            { label: "Projects Delivered", value: "10+" },
+            { label: "Tech Stack", value: "15+" },
+            { label: "Code Commits", value: "1000+" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
-              <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-gradient mb-2">
+              <div className="text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-teal-500 dark:from-indigo-400 dark:to-cyan-400 mb-2">
                 {stat.value}
               </div>
-              <div className="text-sm font-medium text-slate-500 dark:text-slate-400">{stat.label}</div>
+              <div className="text-sm font-medium text-slate-500 dark:text-slate-400">
+                {stat.label}
+              </div>
             </div>
           ))}
         </motion.div>

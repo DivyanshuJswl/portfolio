@@ -1,30 +1,33 @@
 // components/interactive/CursorFollower.tsx
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { motion, useSpring, useMotionValue } from 'framer-motion';
+import { useEffect, useState } from "react";
+import { motion, useSpring, useMotionValue } from "framer-motion";
 
 export default function CursorFollower() {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
 
-  // Use MotionValues for high-performance updates
+  // OPTIMIZATION: Reduce spring stiffness/damping calculations
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
-  // Smooth spring physics for the "trailing" effect
-  const springConfig = { damping: 25, stiffness: 400, mass: 0.5 };
+  // Lighter spring config
+  const springConfig = { damping: 20, stiffness: 300, mass: 0.1 };
   const smoothX = useSpring(cursorX, springConfig);
   const smoothY = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    // Only show custom cursor on non-touch devices
-    if (window.matchMedia('(pointer: fine)').matches) {
-      setIsVisible(true);
-    }
+    // OPTIMIZATION: Strict check to ensure this never runs on mobile/tablets
+    const isTouchDevice =
+      "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    if (isTouchDevice) return;
+
+    setIsVisible(true);
 
     const moveCursor = (e: MouseEvent) => {
+      // Direct updates to motion values bypass React renders
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
     };
@@ -32,17 +35,15 @@ export default function CursorFollower() {
     const handleMouseDown = () => setIsClicking(true);
     const handleMouseUp = () => setIsClicking(false);
 
-    // Smart Hover Detection
+    // Debounced or simplified hover check
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      // Check if hovering over interactive elements
+      // Simplified check using pointer-events logic
+      const style = window.getComputedStyle(target);
       if (
-        target.tagName === 'BUTTON' ||
-        target.tagName === 'A' ||
-        target.tagName === 'INPUT' ||
-        target.closest('button') ||
-        target.closest('a') ||
-        target.classList.contains('clickable')
+        target.tagName === "A" ||
+        target.tagName === "BUTTON" ||
+        style.cursor === "pointer"
       ) {
         setIsHovering(true);
       } else {
@@ -50,16 +51,16 @@ export default function CursorFollower() {
       }
     };
 
-    window.addEventListener('mousemove', moveCursor);
-    window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mouseup', handleMouseUp);
-    window.addEventListener('mouseover', handleMouseOver);
+    window.addEventListener("mousemove", moveCursor, { passive: true }); // Passive listener
+    window.addEventListener("mousedown", handleMouseDown);
+    window.addEventListener("mouseup", handleMouseUp);
+    window.addEventListener("mouseover", handleMouseOver);
 
     return () => {
-      window.removeEventListener('mousemove', moveCursor);
-      window.removeEventListener('mousedown', handleMouseDown);
-      window.removeEventListener('mouseup', handleMouseUp);
-      window.removeEventListener('mouseover', handleMouseOver);
+      window.removeEventListener("mousemove", moveCursor);
+      window.removeEventListener("mousedown", handleMouseDown);
+      window.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("mouseover", handleMouseOver);
     };
   }, [cursorX, cursorY]);
 
@@ -67,43 +68,30 @@ export default function CursorFollower() {
 
   return (
     <>
-      {/* Main Cursor Dot (Always visible, precise) */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-indigo-600 dark:bg-indigo-400 pointer-events-none z-[60] mix-blend-difference"
+        className="fixed top-0 left-0 w-2.5 h-2.5 rounded-full bg-white pointer-events-none z-[100] mix-blend-difference will-change-transform"
         style={{
           x: cursorX,
           y: cursorY,
-          translateX: '-50%',
-          translateY: '-50%',
+          translateX: "-50%",
+          translateY: "-50%",
         }}
       />
-
-      {/* Trailing Ring (Smooth, reacts to hover) */}
       <motion.div
-        className="fixed top-0 left-0 rounded-full border-2 pointer-events-none z-[59]"
+        className="fixed top-0 left-0 rounded-full border border-indigo-500/50 pointer-events-none z-[99] will-change-transform"
         style={{
           x: smoothX,
           y: smoothY,
-          translateX: '-50%',
-          translateY: '-50%',
+          translateX: "-50%",
+          translateY: "-50%",
         }}
         animate={{
-          width: isHovering ? 48 : 24,
-          height: isHovering ? 48 : 24,
-          borderColor: isClicking 
-            ? 'rgba(99, 102, 241, 0.8)' // Indigo active
-            : isHovering 
-              ? 'rgba(99, 102, 241, 0.5)' // Indigo hover
-              : 'rgba(99, 102, 241, 0.3)', // Indigo idle
-          backgroundColor: isHovering ? 'rgba(99, 102, 241, 0.05)' : 'transparent',
+          width: isHovering ? 48 : 20,
+          height: isHovering ? 48 : 20,
+          opacity: isClicking ? 0.8 : 1,
           scale: isClicking ? 0.8 : 1,
         }}
-        transition={{
-          type: "spring",
-          stiffness: 400,
-          damping: 25,
-          mass: 0.5 // Lightweight feel
-        }}
+        transition={{ duration: 0.15 }} // Switch to duration for simple scaling (faster than spring)
       />
     </>
   );

@@ -1,21 +1,21 @@
 // components/3d/SkillsGalaxy.tsx - Add this wrapper
-'use client';
+"use client";
 
-import { useRef, useMemo } from 'react';
-import { useFrame } from '@react-three/fiber';
-import { Text, Float } from '@react-three/drei';
-import * as THREE from 'three';
-import { useScroll } from 'framer-motion';
+import { useRef, useMemo } from "react";
+import { useFrame } from "@react-three/fiber";
+import { Text, Float } from "@react-three/drei";
+import * as THREE from "three";
+import { useScroll } from "framer-motion";
 
 const skills = [
-  { name: 'Go', color: '#00ADD8', size: 1.2 },
-  { name: 'Kafka', color: '#231F20', size: 1.1 },
-  { name: 'Docker', color: '#2496ED', size: 1.0 },
-  { name: 'React', color: '#61DAFB', size: 1.0 },
-  { name: 'Node.js', color: '#339933', size: 0.9 },
-  { name: 'MongoDB', color: '#47A248', size: 0.9 },
-  { name: 'C++', color: '#00599C', size: 0.9 },
-  { name: 'Podman', color: '#892CA0', size: 0.8 },
+  { name: "Go", color: "#00ADD8", size: 1.2 },
+  { name: "Kafka", color: "#231F20", size: 1.1 },
+  { name: "Docker", color: "#2496ED", size: 1.0 },
+  { name: "React", color: "#61DAFB", size: 1.0 },
+  { name: "Node.js", color: "#339933", size: 0.9 },
+  { name: "MongoDB", color: "#47A248", size: 0.9 },
+  { name: "C++", color: "#00599C", size: 0.9 },
+  { name: "Podman", color: "#892CA0", size: 0.8 },
 ];
 
 export default function SkillsGalaxy() {
@@ -25,7 +25,7 @@ export default function SkillsGalaxy() {
     return skills.map((skill, i) => {
       const angle = (i / skills.length) * Math.PI * 2;
       const radius = 3 + Math.random() * 2;
-      
+
       return {
         ...skill,
         position: [
@@ -36,7 +36,7 @@ export default function SkillsGalaxy() {
         velocity: new THREE.Vector3(
           (Math.random() - 0.5) * 0.02,
           (Math.random() - 0.5) * 0.02,
-          (Math.random() - 0.5) * 0.02
+          (Math.random() - 0.5) * 0.02,
         ),
       };
     });
@@ -72,7 +72,12 @@ export default function SkillsGalaxy() {
   return (
     <group ref={groupRef}>
       {skillNodes.map((skill, index) => (
-        <Float key={skill.name} speed={2} rotationIntensity={0.5} floatIntensity={0.5}>
+        <Float
+          key={skill.name}
+          speed={2}
+          rotationIntensity={0.5}
+          floatIntensity={0.5}
+        >
           <group position={skill.position}>
             <mesh castShadow>
               <sphereGeometry args={[skill.size * 0.5, 32, 32]} />

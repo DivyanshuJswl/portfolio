@@ -1,44 +1,49 @@
 // components/ui/Navigation.tsx
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Code2, User, Briefcase, Mail, Cpu } from 'lucide-react';
-import ThemeToggle from './ThemeToggle';
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, Code2, User, Briefcase, Mail, Cpu } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const navItems = [
-  { name: 'Home', href: '#', icon: Code2 },
-  { name: 'About', href: '#about', icon: User },
-  { name: 'Experience', href: '#experience', icon: Briefcase },
-  { name: 'Lab', href: '#lab', icon: Cpu },
-  { name: 'Contact', href: '#contact', icon: Mail },
+  { name: "Home", href: "#", icon: Code2 },
+  { name: "About", href: "#about", icon: User },
+  { name: "Experience", href: "#experience", icon: Briefcase },
+  { name: "Lab", href: "#lab", icon: Cpu },
+  { name: "Contact", href: "#contact", icon: Mail },
 ];
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('Home');
+  const [activeSection, setActiveSection] = useState("Home");
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-      
-      const sections = navItems.map(item => item.href.substring(1)).filter(Boolean);
+
+      const sections = navItems
+        .map((item) => item.href.substring(1))
+        .filter(Boolean);
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
           if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(navItems.find(item => item.href === `#${section}`)?.name || 'Home');
+            setActiveSection(
+              navItems.find((item) => item.href === `#${section}`)?.name ||
+                "Home",
+            );
             break;
           }
         }
       }
-      if (window.scrollY < 100) setActiveSection('Home');
+      if (window.scrollY < 100) setActiveSection("Home");
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -47,19 +52,19 @@ export default function Navigation() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-          scrolled 
-            ? 'py-3 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm' 
-            : 'py-5 bg-transparent'
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-200 ${
+          scrolled
+            ? "py-3 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm"
+            : "py-5 bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
-          
           {/* 1. Logo Section (Left) */}
           <div className="flex-shrink-0 flex items-center">
             <a href="#" className="relative group z-50">
               <span className="text-2xl font-bold bg-clip-text bg-gradient-to-r from-indigo-600 to-teal-500 dark:from-indigo-400 dark:to-cyan-400">
-                DivyanshuJ<span className="text-slate-900 dark:text-white">.</span>
+                DivyanshuJ
+                <span className="text-slate-900 dark:text-white">.</span>
               </span>
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 dark:bg-indigo-400 transition-all duration-300 group-hover:w-full" />
             </a>
@@ -75,15 +80,19 @@ export default function Navigation() {
                   onClick={() => setActiveSection(item.name)}
                   className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                     activeSection === item.name
-                      ? 'text-white'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400'
+                      ? "text-white"
+                      : "text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400"
                   }`}
                 >
                   {activeSection === item.name && (
                     <motion.div
                       layoutId="nav-pill"
                       className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-blue-600 rounded-full shadow-lg shadow-indigo-500/30"
-                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 30,
+                      }}
                     />
                   )}
                   <span className="relative z-10">{item.name}</span>
@@ -103,7 +112,11 @@ export default function Navigation() {
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
@@ -113,9 +126,9 @@ export default function Navigation() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
+            initial={{ opacity: 0, x: "100%" }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
+            exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
             className="fixed inset-0 z-30 md:hidden bg-slate-50 dark:bg-slate-950"
           >

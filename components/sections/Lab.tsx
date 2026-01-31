@@ -1,90 +1,113 @@
 // components/sections/Lab.tsx
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { Database, Server, Zap, Globe, GitBranch, ArrowUpRight, Lock, Activity, Layers, Terminal } from 'lucide-react';
+import { motion } from "framer-motion";
+import {
+  Database,
+  Server,
+  Zap,
+  Globe,
+  GitBranch,
+  ArrowUpRight,
+  Lock,
+  Activity,
+  Layers,
+  Terminal,
+} from "lucide-react";
 
 const projects = [
   {
-    title: 'Zopsmart Microservices',
-    category: 'Enterprise Architecture',
-    description: 'High-throughput e-commerce backend handling millions of events daily.',
-    challenge: 'Handling burst traffic during flash sales without data loss.',
-    solution: 'Implemented Kafka buffering and optimistic locking for inventory.',
-    stack: ['Go', 'Kafka', 'Docker', 'K8s'],
+    title: "Zopsmart Microservices",
+    category: "Enterprise Architecture",
+    description:
+      "High-throughput e-commerce backend handling millions of events daily.",
+    challenge: "Handling burst traffic during flash sales without data loss.",
+    solution:
+      "Implemented Kafka buffering and optimistic locking for inventory.",
+    stack: ["Go", "Kafka", "Docker", "K8s"],
     stats: [
-      { label: 'Events/sec', value: '10K+' },
-      { label: 'Latency', value: '<50ms' },
+      { label: "Events/sec", value: "10K+" },
+      { label: "Latency", value: "<50ms" },
     ],
     links: { github: null, live: null },
     featured: true,
-    icon: Server
+    icon: Server,
   },
   {
-    title: 'Uni Event Hub',
-    category: 'Full Stack Platform',
-    description: 'Real-time event aggregation platform connecting 5000+ students.',
-    challenge: 'Real-time updates for thousands of concurrent users.',
-    solution: 'Built a custom WebSocket engine with room-based partitioning.',
-    stack: ['React', 'Node.js', 'MongoDB', 'Socket.io'],
+    title: "Uni Event Hub",
+    category: "Full Stack Platform",
+    description:
+      "Real-time event aggregation platform connecting 5000+ students.",
+    challenge: "Real-time updates for thousands of concurrent users.",
+    solution: "Built a custom WebSocket engine with room-based partitioning.",
+    stack: ["React", "Node.js", "MongoDB", "Socket.io"],
     stats: [
-      { label: 'Users', value: '5K+' },
-      { label: 'Uptime', value: '99.9%' },
+      { label: "Users", value: "5K+" },
+      { label: "Uptime", value: "99.9%" },
     ],
-    links: { github: 'https://github.com/divyanshujswl/uni-event-hub-frontend', live: 'https://uni-event.shop' },
+    links: {
+      github: "https://github.com/divyanshujswl/uni-event-hub-frontend",
+      live: "https://uni-event.shop",
+    },
     featured: true,
-    icon: Globe
+    icon: Globe,
   },
   {
-    title: 'Go-Cache-DB',
-    category: 'System Tool',
-    description: 'A distributed in-memory key-value store with custom LRU eviction policies.',
-    challenge: 'Ensuring thread safety with high concurrent reads/writes.',
-    solution: 'Used Go RWMutex sharding to reduce lock contention.',
-    stack: ['Go', 'gRPC', 'Protobuf'],
+    title: "Go-Cache-DB",
+    category: "System Tool",
+    description:
+      "A distributed in-memory key-value store with custom LRU eviction policies.",
+    challenge: "Ensuring thread safety with high concurrent reads/writes.",
+    solution: "Used Go RWMutex sharding to reduce lock contention.",
+    stack: ["Go", "gRPC", "Protobuf"],
     stats: [
-      { label: 'Ops/sec', value: '100K+' },
-      { label: 'Type', value: 'LRU' },
+      { label: "Ops/sec", value: "100K+" },
+      { label: "Type", value: "LRU" },
     ],
-    links: { github: 'https://github.com/divyanshujswl', live: null },
+    links: { github: "https://github.com/divyanshujswl", live: null },
     featured: false,
-    icon: Database
+    icon: Database,
   },
   {
-    title: 'LogStreamer',
-    category: 'DevOps Tool',
-    description: 'Lightweight log aggregation service ingesting logs from Docker containers.',
-    challenge: 'Parsing mixed log formats (JSON/Text) efficiently.',
-    solution: 'Wrote a custom zero-allocation parser in Rust.',
-    stack: ['Rust', 'Docker', 'Elasticsearch'],
+    title: "LogStreamer",
+    category: "DevOps Tool",
+    description:
+      "Lightweight log aggregation service ingesting logs from Docker containers.",
+    challenge: "Parsing mixed log formats (JSON/Text) efficiently.",
+    solution: "Wrote a custom zero-allocation parser in Rust.",
+    stack: ["Rust", "Docker", "Elasticsearch"],
     stats: [
-      { label: 'Ingest', value: '50MB/s' },
-      { label: 'Parse', value: '<2ms' },
+      { label: "Ingest", value: "50MB/s" },
+      { label: "Parse", value: "<2ms" },
     ],
-    links: { github: 'https://github.com/divyanshujswl', live: null },
+    links: { github: "https://github.com/divyanshujswl", live: null },
     featured: false,
-    icon: Terminal
+    icon: Terminal,
   },
   {
-    title: 'SecureVault API',
-    category: 'Security',
-    description: 'End-to-end encrypted file sharing service with ephemeral storage.',
-    challenge: 'Securely deleting files after expiration guarantees.',
-    solution: 'Implemented Redis keyspace notifications for auto-wipe.',
-    stack: ['Node.js', 'Redis', 'AWS S3', 'Crypto'],
+    title: "SecureVault API",
+    category: "Security",
+    description:
+      "End-to-end encrypted file sharing service with ephemeral storage.",
+    challenge: "Securely deleting files after expiration guarantees.",
+    solution: "Implemented Redis keyspace notifications for auto-wipe.",
+    stack: ["Node.js", "Redis", "AWS S3", "Crypto"],
     stats: [
-      { label: 'Enc', value: 'AES-256' },
-      { label: 'Exp', value: 'Auto' },
+      { label: "Enc", value: "AES-256" },
+      { label: "Exp", value: "Auto" },
     ],
-    links: { github: 'https://github.com/divyanshujswl', live: null },
+    links: { github: "https://github.com/divyanshujswl", live: null },
     featured: false,
-    icon: Lock
-  }
+    icon: Lock,
+  },
 ];
 
 export default function Lab() {
   return (
-    <section id="lab" className="min-h-screen py-24 px-4 bg-transparent relative">
+    <section
+      id="lab"
+      className="min-h-screen py-24 px-4 bg-transparent relative"
+    >
       <motion.div
         className="max-w-7xl mx-auto"
         initial={{ opacity: 0 }}
@@ -100,16 +123,20 @@ export default function Lab() {
           >
             <Layers className="w-8 h-8 text-teal-500" />
           </motion.div>
-          <motion.h2 
+          <motion.h2
             className="text-5xl md:text-7xl font-bold mb-6 text-slate-900 dark:text-white tracking-tight"
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
           >
-            The <span className="text-gradient">Lab</span>
+            The{" "}
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-teal-500 dark:from-indigo-400 dark:to-cyan-400">
+              Lab
+            </span>
           </motion.h2>
           <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            Deep dives into distributed systems, high-performance tooling, and full-stack architectures.
+            Deep dives into distributed systems, high-performance tooling, and
+            full-stack architectures.
           </p>
         </div>
 
@@ -118,7 +145,9 @@ export default function Lab() {
             <motion.div
               key={project.title}
               className={`group glass rounded-[2rem] hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 border border-white/20 dark:border-white/5 flex flex-col ${
-                project.featured ? 'lg:col-span-3 min-h-[400px]' : 'lg:col-span-2 min-h-[350px]'
+                project.featured
+                  ? "lg:col-span-3 min-h-[400px]"
+                  : "lg:col-span-2 min-h-[350px]"
               }`}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -129,7 +158,9 @@ export default function Lab() {
                 {/* Card Header */}
                 <div className="flex justify-between items-start mb-6">
                   <div className="flex items-center gap-3">
-                    <div className={`p-2.5 rounded-xl ${project.featured ? 'bg-indigo-500/10 text-indigo-500' : 'bg-slate-100 dark:bg-white/5 text-slate-500'}`}>
+                    <div
+                      className={`p-2.5 rounded-xl ${project.featured ? "bg-indigo-500/10 text-indigo-500" : "bg-slate-100 dark:bg-white/5 text-slate-500"}`}
+                    >
                       <project.icon className="w-6 h-6" />
                     </div>
                     <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
@@ -138,12 +169,22 @@ export default function Lab() {
                   </div>
                   <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                     {project.links.github && (
-                      <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-100 dark:bg-white/10 rounded-full hover:bg-indigo-500 hover:text-white transition-colors">
+                      <a
+                        href={project.links.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 bg-slate-100 dark:bg-white/10 rounded-full hover:bg-indigo-500 hover:text-white transition-colors"
+                      >
                         <GitBranch className="w-4 h-4" />
                       </a>
                     )}
                     {project.links.live && (
-                      <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-100 dark:bg-white/10 rounded-full hover:bg-indigo-500 hover:text-white transition-colors">
+                      <a
+                        href={project.links.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 bg-slate-100 dark:bg-white/10 rounded-full hover:bg-indigo-500 hover:text-white transition-colors"
+                      >
                         <ArrowUpRight className="w-4 h-4" />
                       </a>
                     )}
@@ -153,7 +194,7 @@ export default function Lab() {
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">
                   {project.title}
                 </h3>
-                
+
                 <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
                   {project.description}
                 </p>
@@ -161,20 +202,31 @@ export default function Lab() {
                 {/* Challenge/Solution - Only on hover or featured */}
                 <div className="mb-6 p-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5">
                   <div className="mb-2">
-                    <span className="text-xs font-bold text-red-400 uppercase">Challenge: </span>
-                    <span className="text-sm text-slate-600 dark:text-slate-400">{project.challenge}</span>
+                    <span className="text-xs font-bold text-red-400 uppercase">
+                      Challenge:{" "}
+                    </span>
+                    <span className="text-sm text-slate-600 dark:text-slate-400">
+                      {project.challenge}
+                    </span>
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-green-400 uppercase">Solution: </span>
-                    <span className="text-sm text-slate-600 dark:text-slate-400">{project.solution}</span>
+                    <span className="text-xs font-bold text-green-400 uppercase">
+                      Solution:{" "}
+                    </span>
+                    <span className="text-sm text-slate-600 dark:text-slate-400">
+                      {project.solution}
+                    </span>
                   </div>
                 </div>
 
                 <div className="mt-auto">
                   {/* Tech Stack */}
                   <div className="flex flex-wrap gap-2 mb-6">
-                    {project.stack.map(tech => (
-                      <span key={tech} className="px-2 py-1 text-xs font-mono rounded bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-white/5">
+                    {project.stack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 text-xs font-mono rounded bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-white/5"
+                      >
                         {tech}
                       </span>
                     ))}
@@ -182,10 +234,14 @@ export default function Lab() {
 
                   {/* Stats Footer */}
                   <div className="pt-4 border-t border-slate-200/50 dark:border-white/5 flex justify-between items-center">
-                    {project.stats.map(stat => (
+                    {project.stats.map((stat) => (
                       <div key={stat.label}>
-                        <div className="text-lg font-bold text-slate-900 dark:text-white">{stat.value}</div>
-                        <div className="text-xs text-slate-500">{stat.label}</div>
+                        <div className="text-lg font-bold text-slate-900 dark:text-white">
+                          {stat.value}
+                        </div>
+                        <div className="text-xs text-slate-500">
+                          {stat.label}
+                        </div>
                       </div>
                     ))}
                     {project.featured && (
