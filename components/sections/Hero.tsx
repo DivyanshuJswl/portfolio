@@ -2,23 +2,33 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, Terminal, Server } from "lucide-react";
+import { ArrowDown, Terminal, Server, Download } from "lucide-react";
 import Scene from "@/components/3d/Scene";
+import { useChatStore } from "@/lib/store";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
 };
 
 const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.2, delayChildren: 0.1 },
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+    },
   },
 };
 
 export default function Hero() {
+  const toggleChat = useChatStore((state) => state.toggleChat);
+
   return (
     <section className="relative min-h-screen w-full overflow-x-hidden bg-transparent">
       {/* Layout */}
@@ -39,7 +49,7 @@ export default function Hero() {
             viewport={{ once: true, amount: 0.1 }}
             className="max-w-2xl"
           >
-            {/* Status Badge - Glass Style */}
+            {/* Status Badge */}
             <motion.div
               variants={fadeInUp}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 border backdrop-blur-md bg-white/30 border-white/20 dark:bg-slate-800/30 dark:border-white/10 shadow-lg"
@@ -49,7 +59,10 @@ export default function Hero() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
               <span className="text-xs md:text-sm font-mono tracking-wider font-semibold text-slate-700 dark:text-slate-200">
-                AVAILABLE FOR HIRE
+                AVAILABLE FOR HIRE&nbsp;|&nbsp;
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-teal-500 dark:from-indigo-400 dark:to-cyan-400">
+                  @Bangalore
+                </span>
               </span>
             </motion.div>
 
@@ -67,7 +80,7 @@ export default function Hero() {
               variants={fadeInUp}
               className="text-lg sm:text-xl md:text-2xl mb-8 font-light flex flex-wrap justify-center lg:justify-start gap-3 items-center text-slate-700 dark:text-slate-300"
             >
-              <Server className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
+              <Terminal className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
               <span className="font-medium">Backend Engineer</span>
               <span className="text-slate-400 hidden sm:inline">|</span>
               <span>System Architect</span>
@@ -92,22 +105,33 @@ export default function Hero() {
               .
             </motion.p>
 
+            {/* Buttons */}
             <motion.div
               variants={fadeInUp}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center"
+              className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center lg:justify-start items-center"
             >
+              {/* Primary CTA */}
               <a
                 href="#lab"
-                className="px-8 py-4 rounded-xl font-bold shadow-xl transition-all duration-300 min-w-[160px] transform hover:-translate-y-1 bg-slate-900 text-white hover:bg-slate-800 dark:bg-gradient-to-r dark:from-indigo-600 dark:to-blue-600 dark:hover:shadow-indigo-500/25"
+                className="px-8 py-4 rounded-xl font-bold shadow-xl transition-all duration-300 min-w-[160px] transform hover:-translate-y-1 bg-slate-900 text-white hover:bg-slate-800 dark:bg-gradient-to-r dark:from-indigo-600 dark:to-blue-600 dark:hover:shadow-indigo-500/25 flex items-center justify-center text-center"
               >
                 View Projects
               </a>
+
+              {/* Resume Download */}
+              <a
+                href="/resume.pdf"
+                download="Divyanshu_Jaiswal_Resume.pdf"
+                className="px-8 py-4 rounded-xl font-semibold transition-all duration-300 backdrop-blur-md min-w-[160px] border border-slate-200 bg-white/50 text-slate-700 hover:bg-white hover:border-slate-300 dark:bg-white/5 dark:border-white/10 dark:text-white dark:hover:bg-white/10 flex items-center justify-center gap-2 transform hover:-translate-y-1 text-center"
+              >
+                <Download className="w-5 h-5" />
+                Resume
+              </a>
+
+              {/* Chat Launcher */}
               <button
-                onClick={() => {
-                  const event = new CustomEvent("toggleChat");
-                  window.dispatchEvent(event);
-                }}
-                className="px-8 py-4 rounded-xl font-semibold transition-all duration-300 backdrop-blur-md min-w-[160px] border bg-white/40 border-white/40 text-slate-800 hover:bg-white hover:border-white dark:bg-white/5 dark:border-white/10 dark:text-white dark:hover:bg-white/10"
+                onClick={toggleChat}
+                className="px-8 py-4 rounded-xl font-semibold transition-all duration-300 backdrop-blur-md min-w-[160px] border bg-indigo-50/50 border-indigo-200/50 text-indigo-700 hover:bg-indigo-100 dark:bg-indigo-500/10 dark:border-indigo-500/30 dark:text-indigo-300 dark:hover:bg-indigo-500/20 flex items-center justify-center text-center"
               >
                 Chat with AI
               </button>

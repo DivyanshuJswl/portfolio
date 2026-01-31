@@ -21,9 +21,22 @@
   }
 
   /* Enhanced Glass for Cards */
-  .glass {
-    @apply bg-white/40 backdrop-blur-xl border border-white/20 shadow-lg
+ .glass {
+    @apply bg-white/40 border border-white/20 shadow-lg
            dark:bg-[#0a0a0a]/40 dark:border-white/10 dark:shadow-2xl;
+    
+    /* Desktop: Full Blur */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  @media (max-width: 768px) {
+    .glass {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      /* Increase opacity slightly to compensate for less blur */
+      @apply bg-white/60 dark:bg-[#0a0a0a]/60;
+    }
   }
 
   /* --- NEW: Premium Noise Texture --- */

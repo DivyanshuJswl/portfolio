@@ -20,7 +20,7 @@ const timeline = [
     company: "Zopsmart Technology Pvt Ltd",
     period: "2025 - Present",
     location: "Bengaluru, India",
-    tech: ["Go", "Kafka", "Docker", "Podman", "PostgreSQL"],
+    tech: ["Go", "Kafka", "Docker", "Podman", "PostgreSQL", "GoFr.dev", "K8s"],
     description:
       "Architecting high-throughput microservices for enterprise e-commerce systems.",
     achievements: [
@@ -37,9 +37,18 @@ const timeline = [
     company: "Uni Event Hub",
     period: "2024 - 2025",
     location: "Remote",
-    tech: ["React", "Node.js", "MongoDB", "Socket.io", "AWS"],
+    tech: [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Socket.io",
+      "AWS",
+      "Oauth2.0",
+      "JWT",
+      "Express",
+    ],
     description:
-      "Built a real-time campus event aggregation platform serving 5000+ students.",
+      "Built a real-time campus event aggregation platform serving 500+ students.",
     achievements: [
       "Designed a RESTful API supporting 1000+ concurrent users",
       "Implemented real-time notification engine using WebSockets",
@@ -54,13 +63,13 @@ const timeline = [
     company: "Chandigarh University",
     period: "2022 - 2026",
     location: "Punjab, India",
-    tech: ["C++", "Data Structures", "Operating Systems", "Networks"],
+    tech: ["C++", "Java", "Data Structures", "Operating Systems", "Networks", "DBMS"],
     description: "Specializing in Distributed Systems and Advanced Algorithms.",
     achievements: [
-      "CGPA: 8.5/10 (Current)",
-      "Core focus on System Design & Scalability",
-      "Lead Technical Member at Coding Club",
-      'Published research paper on "Microservices vs Monoliths"',
+      "CGPA: 8.2/10 (Current)",
+      "Core focus on Web Development, System Design & Scalability",
+      "Participated at Multiple Coding Events and Hackathons",
+      "Achieved a spot in 'Kargil' Batch: Top 5% of the Cohort",
     ],
   },
 ];

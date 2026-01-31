@@ -17,6 +17,12 @@ const Lab = dynamic(() => import("@/components/sections/Lab"), {
 const Contact = dynamic(() => import("@/components/sections/Contact"), {
   loading: () => <div className="h-screen" />,
 });
+const Achievements = dynamic(
+  () => import("@/components/sections/Achievements"),
+  {
+    loading: () => <div className="h-screen" />,
+  },
+);
 const ChatInterface = dynamic(
   () => import("@/components/interactive/ChatInterface"),
   { ssr: false },
@@ -57,8 +63,9 @@ export default function Home() {
       <div className="relative z-10">
         <Hero />
         <About />
-        <Experience />
         <Lab />
+        <Experience />
+        <Achievements />
         <Contact />
       </div>
 

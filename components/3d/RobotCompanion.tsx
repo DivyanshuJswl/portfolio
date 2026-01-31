@@ -129,3 +129,6 @@ export default function RobotCompanion() {
     </group>
   );
 }
+
+// OPTIMIZATION: Add this line at the VERY END of the file
+useGLTF.preload("/models/robot.glb");
