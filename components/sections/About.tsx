@@ -29,52 +29,7 @@ const highlights = [
 
 export default function About() {
   return (
-    <section id="about" className="min-h-screen py-20 px-4 relative overflow-hidden transition-colors duration-300 bg-gradient-to-b from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-[#0B1120] dark:to-black">
-      {/* Animated Background gradient orbs - Updated to Indigo/Teal */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 100, 0],
-            y: [0, 50, 0],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-teal-500/10 dark:bg-teal-500/20 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.3, 1],
-            x: [0, -100, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2
-          }}
-        />
-        <motion.div
-          className="absolute top-1/2 right-1/3 w-[400px] h-[400px] bg-blue-500/10 dark:bg-indigo-600/15 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.4, 1],
-            x: [0, 80, 0],
-            y: [0, -80, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 4
-          }}
-        />
-      </div>
-
+    <section id="about" className="min-h-screen py-20 px-4 relative bg-transparent">
       <motion.div
         className="max-w-6xl mx-auto relative z-10"
         initial={{ opacity: 0 }}
@@ -83,7 +38,7 @@ export default function About() {
         transition={{ duration: 0.6 }}
       >
         <motion.h2
-          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-center text-slate-900 dark:text-white"
+          className="text-4xl md:text-6xl font-bold mb-6 text-center text-slate-900 dark:text-white"
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
@@ -106,31 +61,34 @@ export default function About() {
           {highlights.map((item, index) => (
             <motion.div
               key={item.title}
-              className="glass p-8 rounded-2xl hover:glow transition-all duration-300 group bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800"
+              // Updated to match Lab/Contact style: stronger glass, rounded-3xl, subtle border
+              className="glass p-10 rounded-3xl hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 group border border-white/20 dark:border-white/5"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ scale: 1.02 }}
             >
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-indigo-50 dark:bg-indigo-500/20 rounded-lg group-hover:bg-indigo-100 dark:group-hover:bg-indigo-500/30 transition-colors">
+              <div className="flex items-start gap-5">
+                <div className="p-4 bg-indigo-50 dark:bg-indigo-500/10 rounded-2xl group-hover:bg-indigo-100 dark:group-hover:bg-indigo-500/20 transition-colors shadow-sm">
                   <item.icon className="w-8 h-8 text-indigo-600 dark:text-indigo-400" />
                 </div>
                 <div>
-                  <h3 className="text-xl md:text-2xl font-bold mb-2 text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  <h3 className="text-2xl font-bold mb-3 text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{item.description}</p>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-base">
+                    {item.description}
+                  </p>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Stats */}
+        {/* Stats Section - Added Glass background container for better readability */}
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 glass rounded-2xl p-8 border border-white/20 dark:border-white/5"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -146,7 +104,7 @@ export default function About() {
               <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-gradient mb-2">
                 {stat.value}
               </div>
-              <div className="text-sm text-slate-500 dark:text-slate-500">{stat.label}</div>
+              <div className="text-sm font-medium text-slate-500 dark:text-slate-400">{stat.label}</div>
             </div>
           ))}
         </motion.div>

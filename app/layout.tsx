@@ -4,7 +4,6 @@ import { Inter, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import ThemeProvider from '@/components/providers/ThemeProvider';
 import Navigation from '@/components/ui/Navigation';
-import ThemeToggle from '@/components/ui/ThemeToggle';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import Loading from '@/components/ui/Loading';
@@ -44,7 +43,6 @@ export default function RootLayout({
           <Suspense fallback={<Loading />}>
             <CursorFollower />
             <Navigation />
-            <ThemeToggle />
             <div className="relative min-h-screen">
               {children}
             </div>
