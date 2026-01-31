@@ -1,4 +1,3 @@
-// components/3d/Scene.tsx
 'use client';
 
 import { Canvas } from '@react-three/fiber';
@@ -6,7 +5,7 @@ import { OrbitControls, PerspectiveCamera, Environment, ContactShadows, Preload 
 import { Suspense } from 'react';
 import RobotCompanion from './RobotCompanion';
 import SkillsGalaxy from './SkillsGalaxy';
-import { ACESFilmicToneMapping } from 'three';
+import * as THREE from 'three';
 
 interface SceneProps {
   section: 'hero' | 'skills' | 'lab';
@@ -16,28 +15,27 @@ function SceneLoader() {
   return (
     <mesh>
       <sphereGeometry args={[0.5, 32, 32]} />
-      <meshStandardMaterial color="#8B5CF6" />
+      <meshStandardMaterial color="#8B5CF6" wireframe />
     </mesh>
   );
 }
 
 export default function Scene({ section }: SceneProps) {
   return (
-    <div className="absolute inset-0 z-0" style={{ background: 'transparent' }}>
+    <div className="w-full h-full relative bg-transparent">
       <Canvas 
         shadows 
         dpr={[1, 2]}
         gl={{
           alpha: true,
           antialias: true,
-          toneMapping: ACESFilmicToneMapping,
-          powerPreference: 'high-performance',
+          toneMapping: THREE.ACESFilmicToneMapping,
+          toneMappingExposure: 1.2,
         }}
-        style={{ background: 'transparent' }}
+        camera={{ position: [0, 1, 6], fov: 45 }}
       >
-        <PerspectiveCamera makeDefault position={[0, 2, 8]} fov={50} />
+        <PerspectiveCamera makeDefault position={[0, 1, 6]} fov={45} />
         
-        {/* Enhanced Lighting */}
         <ambientLight intensity={0.6} />
         <spotLight
           position={[10, 10, 10]}
@@ -45,27 +43,22 @@ export default function Scene({ section }: SceneProps) {
           penumbra={1}
           intensity={1.5}
           castShadow
-          shadow-mapSize={[1024, 1024]}
           color="#ffffff"
         />
         <pointLight position={[-10, -10, -10]} intensity={0.8} color="#4F46E5" />
         <pointLight position={[10, 0, -10]} intensity={0.6} color="#EC4899" />
-        <pointLight position={[-10, 5, 5]} intensity={0.6} color="#3B82F6" />
 
-        {/* Environment */}
         <Environment preset="city" />
         
-        {/* Ground shadow */}
+        {/* UPDATED: Lowered shadow position to match the new robot height */}
         <ContactShadows
-          position={[0, -2, 0]}
+          position={[0, -1.5, 0]}
           opacity={0.4}
           scale={20}
           blur={2}
           far={4}
-          resolution={512}
         />
 
-        {/* Conditional 3D content */}
         <Suspense fallback={<SceneLoader />}>
           {section === 'hero' && <RobotCompanion />}
           {section === 'skills' && <SkillsGalaxy />}
