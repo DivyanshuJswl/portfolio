@@ -43,12 +43,12 @@ export default function About() {
   return (
     <section
       id="about"
-      className="min-h-screen py-24 px-4 relative bg-transparent flex flex-col justify-center"
+      className="min-h-screen py-24 px-4 relative bg-transparent flex flex-col justify-center overflow-hidden"
     >
       <div className="max-w-7xl mx-auto relative z-10 w-full">
-        {/* 1. Split Layout: Bio vs Mosaic */}
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center mb-24">
-          {/* Left Column: Punchy Text */}
+        {/* 1. Split Layout */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center mb-16 lg:mb-24">
+          {/* Left Column: Text */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -62,7 +62,7 @@ export default function About() {
               </span>
             </h2>
 
-            {/* One-Liners / Identity Tags */}
+            {/* One-Liners */}
             <div className="space-y-5 mb-12">
               <div className="flex items-center gap-4 text-lg md:text-xl text-slate-700 dark:text-slate-300 font-medium">
                 <div className="p-2 bg-indigo-100 dark:bg-indigo-500/20 rounded-lg text-indigo-600 dark:text-indigo-400">
@@ -92,14 +92,17 @@ export default function About() {
               </div>
             </div>
 
-            {/* Stats Grid */}
-            <div className="grid grid-cols-4 gap-4">
+            {/* Stats Grid - Kept 2 cols for mobile readability */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {stats.map((stat, idx) => (
-                <div key={idx} className="text-center">
-                  <div className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-teal-500 dark:from-indigo-400 dark:to-cyan-400">
+                <div
+                  key={idx}
+                  className="text-center p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-200 dark:border-white/5"
+                >
+                  <div className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-teal-500 dark:from-indigo-400 dark:to-cyan-400">
                     {stat.value}
                   </div>
-                  <div className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-500 mt-1">
+                  <div className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-500 mt-1">
                     {stat.label}
                   </div>
                 </div>
@@ -107,45 +110,80 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Right Column: LARGE Image Mosaic */}
+          {/* Right Column: Responsive Image Area */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative h-[700px] w-full hidden lg:block"
+            className="w-full"
           >
-            {/* Decorative Background Blob */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-indigo-500/10 to-teal-500/10 rounded-full blur-[100px] -z-10" />
+            {/* MOBILE/TABLET LAYOUT (< lg) */}
+            <div className="lg:hidden w-full px-2">
+              {/* FIXED: Using grid-cols-3 to fit all images in one row (1/3 width each) */}
+              <div className="grid grid-cols-3 gap-3">
+                {/* Image 1 */}
+                <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden border-2 border-white dark:border-[#0B1120] shadow-lg">
+                  <Image
+                    src="https://res.cloudinary.com/dh5cebjwj/image/upload/v1769902633/IMG_20260105_123558_bvm3cc.jpg"
+                    alt="Divyanshu Profile"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
 
-            {/* Image 1: Main Portrait (Large & Vertical) */}
-            <div className="absolute top-0 right-0 w-80 h-[500px] rounded-[2.5rem] overflow-hidden border-4 border-white dark:border-[#0B1120] shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-700 z-10 hover:z-30">
-              <Image
-                src="https://res.cloudinary.com/dh5cebjwj/image/upload/v1769902633/IMG_20260105_123558_bvm3cc.jpg"
-                alt="Divyanshu Profile"
-                fill
-                className="object-cover"
-              />
+                {/* Image 2 */}
+                <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden border-2 border-white dark:border-[#0B1120] shadow-lg">
+                  <Image
+                    src="https://res.cloudinary.com/dh5cebjwj/image/upload/v1769901905/1745077103832_hd0jhb.jpg"
+                    alt="Coding Setup"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+
+                {/* Image 3 */}
+                <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden border-2 border-white dark:border-[#0B1120] shadow-lg">
+                  <Image
+                    src="https://res.cloudinary.com/dh5cebjwj/image/upload/v1769901830/1747112493150_d0dyep.jpg"
+                    alt="Code Details"
+                    fill
+                    className="object-cover opacity-90"
+                  />
+                </div>
+              </div>
             </div>
 
-            {/* Image 2: Work Mode (Wide & Bottom) */}
-            <div className="absolute bottom-10 left-0 w-96 h-64 rounded-[2.5rem] overflow-hidden border-4 border-white dark:border-[#0B1120] shadow-2xl -rotate-3 hover:rotate-0 transition-transform duration-700 z-20 hover:z-30">
-              <Image
-                src="https://res.cloudinary.com/dh5cebjwj/image/upload/v1769901905/1745077103832_hd0jhb.jpg"
-                alt="Coding Setup"
-                fill
-                className="object-cover"
-              />
-            </div>
+            {/* DESKTOP LAYOUT (lg+) - Unchanged */}
+            <div className="hidden lg:block relative h-[700px] w-full">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-indigo-500/10 to-teal-500/10 rounded-full blur-[100px] -z-10" />
 
-            {/* Image 3: Detail Shot (Floating) */}
-            <div className="absolute top-32 left-10 w-60 h-48 rounded-[2rem] overflow-hidden border-4 border-white dark:border-[#0B1120] shadow-xl -rotate-12 hover:rotate-0 transition-transform duration-700 z-0 hover:z-30">
-              <Image
-                src="https://res.cloudinary.com/dh5cebjwj/image/upload/v1769901830/1747112493150_d0dyep.jpg"
-                alt="Code Details"
-                fill
-                className="object-cover opacity-90"
-              />
+              <div className="absolute top-0 right-0 w-80 h-[500px] rounded-[2.5rem] overflow-hidden border-4 border-white dark:border-[#0B1120] shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-700 z-10 hover:z-30">
+                <Image
+                  src="https://res.cloudinary.com/dh5cebjwj/image/upload/v1769902633/IMG_20260105_123558_bvm3cc.jpg"
+                  alt="Divyanshu Profile"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+
+              <div className="absolute bottom-10 left-0 w-96 h-64 rounded-[2.5rem] overflow-hidden border-4 border-white dark:border-[#0B1120] shadow-2xl -rotate-3 hover:rotate-0 transition-transform duration-700 z-20 hover:z-30">
+                <Image
+                  src="https://res.cloudinary.com/dh5cebjwj/image/upload/v1769901905/1745077103832_hd0jhb.jpg"
+                  alt="Coding Setup"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+
+              <div className="absolute top-32 left-10 w-48 h-48 rounded-[2rem] overflow-hidden border-4 border-white dark:border-[#0B1120] shadow-xl -rotate-12 hover:rotate-0 transition-transform duration-700 z-0 hover:z-30">
+                <Image
+                  src="https://res.cloudinary.com/dh5cebjwj/image/upload/v1769901830/1747112493150_d0dyep.jpg"
+                  alt="Code Details"
+                  fill
+                  className="object-cover opacity-90"
+                />
+              </div>
             </div>
           </motion.div>
         </div>
