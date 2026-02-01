@@ -2,9 +2,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, Terminal, Download } from "lucide-react";
+import { ArrowDown, Terminal, Download, Sun, ArrowRight } from "lucide-react";
 import Scene from "@/components/3d/Scene";
-import { useChatStore } from "@/lib/store";
 import ErrorBoundary from "../ErrorBoundary";
 
 const fadeInUp = {
@@ -28,8 +27,7 @@ const staggerContainer = {
 };
 
 export default function Hero() {
-  const toggleChat = useChatStore((state) => state.toggleChat);
-
+  
   return (
     <section className="relative min-h-screen w-full overflow-x-hidden bg-transparent">
       {/* Layout */}
@@ -108,36 +106,40 @@ export default function Hero() {
               .
             </motion.p>
 
-            {/* Buttons */}
             <motion.div
               variants={fadeInUp}
-              className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center lg:justify-start items-center"
+              className="flex flex-col items-center lg:items-start gap-6"
             >
-              {/* Primary CTA */}
-              <a
-                href="#lab"
-                className="px-8 py-4 rounded-xl font-bold shadow-xl transition-all duration-300 min-w-[160px] transform hover:-translate-y-1 bg-slate-900 text-white hover:bg-slate-800 dark:bg-gradient-to-r dark:from-indigo-600 dark:to-blue-600 dark:hover:shadow-indigo-500/25 flex items-center justify-center text-center"
-              >
-                View Projects
-              </a>
+              {/* Row 1: The Two Main Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                <a
+                  href="#lab"
+                  className="px-8 py-4 rounded-xl font-bold shadow-xl transition-all duration-300 min-w-[160px] transform hover:-translate-y-1 bg-slate-900 text-white hover:bg-slate-800 dark:bg-gradient-to-r dark:from-indigo-600 dark:to-blue-600 dark:hover:shadow-indigo-500/25 flex items-center justify-center text-center"
+                >
+                  View Projects
+                </a>
 
-              {/* Resume Download */}
-              <a
-                href="/resume.pdf"
-                download="Divyanshu_Jaiswal_Resume.pdf"
-                className="px-8 py-4 rounded-xl font-semibold transition-all duration-300 backdrop-blur-md min-w-[160px] border border-slate-200 bg-white/50 text-slate-700 hover:bg-white hover:border-slate-300 dark:bg-white/5 dark:border-white/10 dark:text-white dark:hover:bg-white/10 flex items-center justify-center gap-2 transform hover:-translate-y-1 text-center"
-              >
-                <Download className="w-5 h-5" />
-                Resume
-              </a>
+                <a
+                  href="/resume.pdf"
+                  download="Divyanshu_Jaiswal_Resume.pdf"
+                  className="px-8 py-4 rounded-xl font-semibold transition-all duration-300 backdrop-blur-md min-w-[160px] border border-slate-200 bg-white/50 text-slate-700 hover:bg-white hover:border-slate-300 dark:bg-white/5 dark:border-white/10 dark:text-white dark:hover:bg-white/10 flex items-center justify-center gap-2 transform hover:-translate-y-1 text-center"
+                >
+                  <Download className="w-5 h-5" />
+                  Resume
+                </a>
+              </div>
 
-              {/* Chat Launcher */}
-              <button
-                onClick={toggleChat}
-                className="px-8 py-4 rounded-xl font-semibold transition-all duration-300 backdrop-blur-md min-w-[160px] border bg-indigo-50/50 border-indigo-200/50 text-indigo-700 hover:bg-indigo-100 dark:bg-indigo-500/10 dark:border-indigo-500/30 dark:text-indigo-300 dark:hover:bg-indigo-500/20 flex items-center justify-center text-center"
+              {/* Row 2: Subtle "Solar System" Link */}
+              <a
+                href="/solar/index.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400 transition-colors"
               >
-                Chat with AI
-              </button>
+                <Sun className="w-4 h-4 group-hover:rotate-180 transition-transform duration-700" />
+                <span>Explore 3D Solar System</span>
+                <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+              </a>
             </motion.div>
           </motion.div>
         </div>
