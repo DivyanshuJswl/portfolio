@@ -13,7 +13,6 @@ import { Suspense, useEffect, useState, useRef } from "react";
 import { useInView } from "framer-motion"; // Use Framer Motion's lightweight observer
 import RobotCompanion from "./RobotCompanion";
 import SkillsGalaxy from "./SkillsGalaxy";
-import * as THREE from "three";
 
 interface SceneProps {
   section: "hero" | "skills" | "lab";

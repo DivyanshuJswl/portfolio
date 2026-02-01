@@ -6,8 +6,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Briefcase,
   GraduationCap,
-  Code2,
-  Server,
   Terminal,
   Cpu,
 } from "lucide-react";

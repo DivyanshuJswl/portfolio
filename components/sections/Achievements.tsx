@@ -3,10 +3,9 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Trophy, Code, Cpu, Globe, Award, Star, Zap, X } from "lucide-react";
+import { Trophy, Code, Award, Star, Zap, X } from "lucide-react";
 import Image from "next/image";
 
-// --- DATA: Replace with your real stats & images ---
 const achievements = [
   {
     id: "leetcode",

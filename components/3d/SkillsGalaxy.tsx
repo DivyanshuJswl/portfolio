@@ -5,7 +5,6 @@ import { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Text, Float } from "@react-three/drei";
 import * as THREE from "three";
-import { useScroll } from "framer-motion";
 
 const skills = [
   { name: "Go", color: "#00ADD8", size: 1.2 },

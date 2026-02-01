@@ -1,8 +1,7 @@
-// components/ErrorBoundary.tsx
 "use client";
 
-import { Component, ReactNode } from "react";
-import { motion } from "framer-motion";
+import React, { Component, ErrorInfo, ReactNode } from "react";
+import { AlertTriangle, RefreshCw } from "lucide-react";
 
 interface Props {
   children: ReactNode;
@@ -11,49 +10,43 @@ interface Props {
 
 interface State {
   hasError: boolean;
-  error?: Error;
 }
 
 export default class ErrorBoundary extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = { hasError: false };
+  public state: State = {
+    hasError: false,
+  };
+
+  public static getDerivedStateFromError(_: Error): State {
+    return { hasError: true };
   }
 
-  static getDerivedStateFromError(error: Error): State {
-    return { hasError: true, error };
+  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.error("Uncaught error:", error, errorInfo);
   }
 
-  componentDidCatch(error: Error, errorInfo: any) {
-    console.error("Error caught by boundary:", error, errorInfo);
-  }
-
-  render() {
+  public render() {
     if (this.state.hasError) {
+      if (this.props.fallback) return this.props.fallback;
+
       return (
-        this.props.fallback || (
-          <div className="min-h-screen flex items-center justify-center bg-black px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-center max-w-md"
-            >
-              <h2 className="text-3xl font-bold mb-4 text-red-500">
-                Oops! Something went wrong
-              </h2>
-              <p className="text-gray-400 mb-6">
-                Don&apos;t worry, it&apos;s not you - it&apos;s me. Please refresh the page or
-                try again later.
-              </p>
-              <button
-                onClick={() => window.location.reload()}
-                className="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
-              >
-                Refresh Page
-              </button>
-            </motion.div>
+        <div className="w-full h-full min-h-[200px] flex flex-col items-center justify-center bg-slate-50/50 dark:bg-white/5 rounded-2xl border border-red-200 dark:border-red-900/30 p-6 text-center">
+          <div className="p-3 bg-red-100 dark:bg-red-900/20 rounded-full mb-4">
+            <AlertTriangle className="w-6 h-6 text-red-500" />
           </div>
-        )
+          <h3 className="text-slate-900 dark:text-white font-bold mb-2">
+            System Module Failed
+          </h3>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
+            The 3D component encountered an error.
+          </p>
+          <button
+            onClick={() => this.setState({ hasError: false })}
+            className="flex items-center gap-2 px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
+          >
+            <RefreshCw className="w-3 h-3" /> Reload Module
+          </button>
+        </div>
       );
     }
 

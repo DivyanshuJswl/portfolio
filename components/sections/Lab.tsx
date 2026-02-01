@@ -3,17 +3,15 @@
 
 import { motion } from "framer-motion";
 import {
-  Database,
   Server,
   Zap,
   Globe,
   GitBranch,
   ArrowUpRight,
-  Lock,
   Activity,
   Layers,
-  Terminal,
 } from "lucide-react";
+import Image from "next/image";
 
 const projects = [
   {
@@ -32,6 +30,8 @@ const projects = [
     links: { github: null, live: null },
     featured: true,
     icon: Server,
+    image:
+      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop",
   },
   {
     title: "Uni Event Hub",
@@ -51,51 +51,76 @@ const projects = [
     },
     featured: true,
     icon: Globe,
+    image:
+      "https://res.cloudinary.com/dh5cebjwj/image/upload/v1769904970/Screenshot_2026-02-01_at_5.45.48_AM_yfk7k5.png",
   },
   {
-    title: 'VisionCare',
-    category: 'Healthcare Platform',
-    description: 'Transforming lives through exceptional eye care with cutting-edge technology and compassionate service.',
-    challenge: 'Securely managing sensitive patient records and appointment scheduling.',
-    solution: 'Implemented role-based access control (RBAC) and encrypted data storage.',
-    stack: ['React', 'Node.js', 'MongoDB', 'Express'],
+    title: "VisionCare",
+    category: "Healthcare Platform",
+    description:
+      "Transforming lives through exceptional eye care with cutting-edge technology.",
+    challenge:
+      "Securely managing sensitive patient records and appointment scheduling.",
+    solution:
+      "Implemented role-based access control (RBAC) and encrypted data storage.",
+    stack: ["React", "Node.js", "MongoDB", "Express"],
     stats: [
-      { label: 'Patients', value: '200+' },
-      { label: 'Service', value: '24/7' },
+      { label: "Patients", value: "200+" },
+      { label: "Service", value: "24/7" },
     ],
-    links: { github: 'https://github.com/divyanshujswl/eyecare', live: 'https://visioncare.divyanshujswl.in' },
+    links: {
+      github: "https://github.com/divyanshujswl/eyecare",
+      live: "https://visioncare.divyanshujswl.in",
+    },
     featured: false,
-    icon: Activity
+    icon: Activity,
+    image:
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop",
   },
   {
-    title: 'Property AI',
-    category: 'Tech AI',
-    description: 'Get instant, AI-powered property valuations with detailed market insights.',
-    challenge: 'Providing accurate real-time valuation based on sparse data points.',
-    solution: 'Integrated predictive ML models with location-based market analysis.',
-    stack: ['React', 'Node.js', 'MongoDB', 'AI'],
+    title: "Property AI",
+    category: "Tech AI",
+    description:
+      "Get instant, AI-powered property valuations with detailed market insights.",
+    challenge:
+      "Providing accurate real-time valuation based on sparse data points.",
+    solution:
+      "Integrated predictive ML models with location-based market analysis.",
+    stack: ["React", "Node.js", "MongoDB", "AI"],
     stats: [
-      { label: 'Accuracy', value: '95%' },
-      { label: 'Listings', value: '500+' },
+      { label: "Accuracy", value: "95%" },
+      { label: "Listings", value: "500+" },
     ],
-    links: { github: 'https://github.com/DivyanshuJswl/real-estate-frontend', live: 'https://propertyai.divyanshujswl.in/' },
+    links: {
+      github: "https://github.com/DivyanshuJswl/real-estate-frontend",
+      live: "https://propertyai.divyanshujswl.in/",
+    },
     featured: false,
-    icon: Layers
+    icon: Layers,
+    image:
+      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1973&auto=format&fit=crop",
   },
   {
-    title: 'Wanderlust AI',
-    category: 'AI Travel Agent',
-    description: 'Your personal trip planner creating custom itineraries tailored to your interests.',
-    challenge: 'Generating coherent, multi-day itineraries instantly.',
-    solution: 'Leveraged GenAI with structured prompting for logistic optimization.',
-    stack: ['React', 'OAuth', 'Node.js', 'OpenAI'],
+    title: "Wanderlust AI",
+    category: "AI Travel Agent",
+    description:
+      "Your personal trip planner creating custom itineraries tailored to your interests.",
+    challenge: "Generating coherent, multi-day itineraries instantly.",
+    solution:
+      "Leveraged GenAI with structured prompting for logistic optimization.",
+    stack: ["React", "OAuth", "Node.js", "OpenAI"],
     stats: [
-      { label: 'Plans', value: '1K+' },
-      { label: 'Speed', value: '<5s' },
+      { label: "Plans", value: "1K+" },
+      { label: "Speed", value: "<5s" },
     ],
-    links: { github: 'https://github.com/DivyanshuJswl/AI-travel', live: 'https://travelai.divyanshujswl.in/' },
+    links: {
+      github: "https://github.com/DivyanshuJswl/AI-travel",
+      live: "https://travelai.divyanshujswl.in/",
+    },
     featured: false,
-    icon: Zap
+    icon: Zap,
+    image:
+      "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021&auto=format&fit=crop",
   },
 ];
 
@@ -141,49 +166,71 @@ export default function Lab() {
           {projects.map((project, idx) => (
             <motion.div
               key={project.title}
-              className={`group glass rounded-[2rem] hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 border border-white/20 dark:border-white/5 flex flex-col ${
+              className={`group glass rounded-[2rem] hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 border border-white/20 dark:border-white/5 flex flex-col overflow-hidden ${
                 project.featured
-                  ? "lg:col-span-3 min-h-[400px]"
-                  : "lg:col-span-2 min-h-[350px]"
+                  ? "lg:col-span-3 min-h-[500px]"
+                  : "lg:col-span-2 min-h-[450px]"
               }`}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
             >
-              <div className="p-8 flex-1 flex flex-col h-full">
-                {/* Card Header */}
-                <div className="flex justify-between items-start mb-6">
-                  <div className="flex items-center gap-3">
-                    <div
-                      className={`p-2.5 rounded-xl ${project.featured ? "bg-indigo-500/10 text-indigo-500" : "bg-slate-100 dark:bg-white/5 text-slate-500"}`}
-                    >
-                      <project.icon className="w-6 h-6" />
-                    </div>
-                    <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                      {project.category}
-                    </span>
-                  </div>
-                  <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+              {/* 1. Project Image Area */}
+              <div className="relative w-full h-48 sm:h-56 overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-102"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-[#0B1120] to-transparent opacity-80" />
+
+                {/* Floating Icon */}
+                <div className="absolute top-4 left-4 p-2.5 rounded-xl bg-white/90 dark:bg-black/50 backdrop-blur-md border border-white/20 dark:border-white/10 text-indigo-600 dark:text-indigo-400 shadow-lg">
+                  <project.icon className="w-5 h-5" />
+                </div>
+              </div>
+
+              {/* Card Content */}
+              <div className="p-8 pt-2 flex-1 flex flex-col h-full relative">
+                {/* Header with Links */}
+                <div className="flex justify-between items-start mb-4">
+                  <span className="text-xs font-bold uppercase tracking-wider text-indigo-500 dark:text-indigo-400 mt-1">
+                    {project.category}
+                  </span>
+
+                  {/* 2. Link Buttons with Text Tooltips */}
+                  <div className="flex gap-3">
                     {project.links.github && (
-                      <a
-                        href={project.links.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 bg-slate-100 dark:bg-white/10 rounded-full hover:bg-indigo-500 hover:text-white transition-colors"
-                      >
-                        <GitBranch className="w-4 h-4" />
-                      </a>
+                      <div className="flex flex-col items-center group/btn relative">
+                        <a
+                          href={project.links.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 bg-slate-100 dark:bg-white/10 rounded-full hover:bg-indigo-600 hover:text-white transition-all shadow-sm"
+                        >
+                          <GitBranch className="w-4 h-4" />
+                        </a>
+                        <span className="absolute top-full mt-1.5 text-[10px] font-bold text-slate-500 dark:text-slate-400 opacity-0 group-hover/btn:opacity-100 transition-opacity whitespace-nowrap">
+                          Source
+                        </span>
+                      </div>
                     )}
                     {project.links.live && (
-                      <a
-                        href={project.links.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 bg-slate-100 dark:bg-white/10 rounded-full hover:bg-indigo-500 hover:text-white transition-colors"
-                      >
-                        <ArrowUpRight className="w-4 h-4" />
-                      </a>
+                      <div className="flex flex-col items-center group/btn relative">
+                        <a
+                          href={project.links.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 bg-slate-100 dark:bg-white/10 rounded-full hover:bg-emerald-500 hover:text-white transition-all shadow-sm"
+                        >
+                          <ArrowUpRight className="w-4 h-4" />
+                        </a>
+                        <span className="absolute top-full mt-1.5 text-[10px] font-bold text-slate-500 dark:text-slate-400 opacity-0 group-hover/btn:opacity-100 transition-opacity whitespace-nowrap">
+                          Live
+                        </span>
+                      </div>
                     )}
                   </div>
                 </div>
@@ -192,25 +239,25 @@ export default function Lab() {
                   {project.title}
                 </h3>
 
-                <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed text-sm">
                   {project.description}
                 </p>
 
-                {/* Challenge/Solution - Only on hover or featured */}
-                <div className="mb-6 p-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5">
+                {/* Challenge/Solution - Hover Reveal */}
+                <div className="mb-6 p-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 text-xs">
                   <div className="mb-2">
-                    <span className="text-xs font-bold text-red-400 uppercase">
+                    <span className="font-bold text-red-400 uppercase">
                       Challenge:{" "}
                     </span>
-                    <span className="text-sm text-slate-600 dark:text-slate-400">
+                    <span className="text-slate-600 dark:text-slate-400">
                       {project.challenge}
                     </span>
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-green-400 uppercase">
+                    <span className="font-bold text-green-400 uppercase">
                       Solution:{" "}
                     </span>
-                    <span className="text-sm text-slate-600 dark:text-slate-400">
+                    <span className="text-slate-600 dark:text-slate-400">
                       {project.solution}
                     </span>
                   </div>
@@ -222,7 +269,7 @@ export default function Lab() {
                     {project.stack.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 text-xs font-mono rounded bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-white/5"
+                        className="px-2.5 py-1 text-[11px] font-semibold rounded-md bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-500/20"
                       >
                         {tech}
                       </span>
@@ -233,17 +280,18 @@ export default function Lab() {
                   <div className="pt-4 border-t border-slate-200/50 dark:border-white/5 flex justify-between items-center">
                     {project.stats.map((stat) => (
                       <div key={stat.label}>
-                        <div className="text-lg font-bold text-slate-900 dark:text-white">
+                        <div className="text-base font-bold text-slate-900 dark:text-white">
                           {stat.value}
                         </div>
-                        <div className="text-xs text-slate-500">
+                        <div className="text-[10px] uppercase font-bold text-slate-400">
                           {stat.label}
                         </div>
                       </div>
                     ))}
                     {project.featured && (
-                      <div className="flex items-center gap-1 text-emerald-500 text-xs font-bold px-2 py-1 bg-emerald-500/10 rounded-full">
-                        <Activity className="w-3 h-3" /> Live
+                      <div className="flex items-center gap-1.5 text-emerald-500 text-[10px] font-bold px-2.5 py-1 bg-emerald-500/10 rounded-full border border-emerald-500/20">
+                        <Activity className="w-3 h-3" />
+                        <span>DEPLOYED</span>
                       </div>
                     )}
                   </div>

@@ -2,9 +2,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, Terminal, Server, Download } from "lucide-react";
+import { ArrowDown, Terminal, Download } from "lucide-react";
 import Scene from "@/components/3d/Scene";
 import { useChatStore } from "@/lib/store";
+import ErrorBoundary from "../ErrorBoundary";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -35,9 +36,11 @@ export default function Hero() {
       <div className="relative z-10 w-full min-h-screen flex flex-col lg:grid lg:grid-cols-2">
         {/* Left: Robot */}
         <div className="relative w-full h-[450px] lg:h-full order-1 lg:order-1 flex items-center justify-center">
-          <div className="w-full h-full relative">
-            <Scene section="hero" />
-          </div>
+          <ErrorBoundary>
+            <div className="w-full h-full relative">
+              <Scene section="hero" />
+            </div>
+          </ErrorBoundary>
         </div>
 
         {/* Right: Text */}
