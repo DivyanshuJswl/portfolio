@@ -62,7 +62,7 @@ export default function Hero() {
               <span className="text-xs md:text-sm font-mono tracking-wider font-semibold text-slate-700 dark:text-slate-200">
                 AVAILABLE FOR HIRE&nbsp;|&nbsp;
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-teal-500 dark:from-indigo-400 dark:to-cyan-400">
-                  @Bangalore
+                  @Bangalore, India
                 </span>
               </span>
             </motion.div>

@@ -49,46 +49,43 @@ export default function About() {
         {/* 1. Split Layout */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center mb-16 lg:mb-24">
           {/* Left Column: Text */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            className="flex-1 space-y-6"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-8 text-slate-900 dark:text-white leading-tight">
-              About <br />
+            <h2 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
+              About my <br />
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-teal-500 dark:from-indigo-400 dark:to-cyan-400">
-                The Tinkerer
+                Architecture.
               </span>
             </h2>
+            
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
+                <p className="text-lg font-medium text-slate-700 dark:text-slate-200">
+                  Backend Engineer at <span className="font-bold">Zopsmart</span>.
+                </p>
+              </div>
 
-            {/* One-Liners */}
-            <div className="space-y-5 mb-12">
-              <div className="flex items-center gap-4 text-lg md:text-xl text-slate-700 dark:text-slate-300 font-medium">
-                <div className="p-2 bg-indigo-100 dark:bg-indigo-500/20 rounded-lg text-indigo-600 dark:text-indigo-400">
-                  <Terminal className="w-5 h-5" />
-                </div>
-                <span>
-                  Backend engineer at{" "}
-                  <strong className="text-slate-900 dark:text-white">
-                    Zopsmart
-                  </strong>
-                  .
+              <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed max-w-lg">
+                I don't just write code; I design systems. Specializing in 
+                <span className="text-indigo-600 dark:text-indigo-400"> high-throughput microservices</span> and 
+                <span className="text-indigo-600 dark:text-indigo-400"> event-driven architecture</span>. 
+                My focus is on shaving off milliseconds and ensuring 99.9% uptime.
+              </p>
+
+              <div className="flex flex-wrap gap-3 pt-2">
+                <span className="px-3 py-1 text-sm rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300">
+                  High Concurrency
                 </span>
-              </div>
-
-              <div className="flex items-center gap-4 text-lg md:text-xl text-slate-700 dark:text-slate-300 font-medium">
-                <div className="p-2 bg-teal-100 dark:bg-teal-500/20 rounded-lg text-teal-600 dark:text-teal-400">
-                  <Zap className="w-5 h-5" />
-                </div>
-                <span>Obsessed with concurrency & speed.</span>
-              </div>
-
-              <div className="flex items-center gap-4 text-lg md:text-xl text-slate-700 dark:text-slate-300 font-medium">
-                <div className="p-2 bg-amber-100 dark:bg-amber-500/20 rounded-lg text-amber-600 dark:text-amber-400">
-                  <Coffee className="w-5 h-5" />
-                </div>
-                <span>Turning caffeine into clean Go code.</span>
+                <span className="px-3 py-1 text-sm rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300">
+                  Distributed Systems
+                </span>
+                <span className="px-3 py-1 text-sm rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300">
+                  Cloud Native
+                </span>
               </div>
             </div>
 

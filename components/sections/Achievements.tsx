@@ -124,7 +124,7 @@ export default function Achievements() {
 
                   <div className="mt-auto flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-white opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
                     <Zap className="w-4 h-4 text-amber-500" />
-                    <span>Click to view proof</span>
+                    <span>View more</span>
                   </div>
                 </div>
               </div>
@@ -176,12 +176,6 @@ export default function Achievements() {
                       (item) =>
                         item.id === selectedId && (
                           <div key={item.id}>
-                            <div
-                              className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r ${item.color} mb-6`}
-                            >
-                              <Award className="w-3 h-3" />
-                              VERIFIED ACHIEVEMENT
-                            </div>
                             <h3 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
                               {item.title}
                             </h3>
