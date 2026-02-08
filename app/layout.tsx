@@ -4,16 +4,8 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/components/providers/ThemeProvider";
 import Navigation from "@/components/ui/Navigation";
-import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import Loading from "@/components/ui/Loading";
-
-const CursorFollower = dynamic(
-  () => import("@/components/interactive/CursorFollower"),
-  {
-    ssr: false,
-  },
-);
 
 const inter = Inter({
   subsets: ["latin"],
@@ -47,7 +39,6 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <Suspense fallback={<Loading />}>
-            <CursorFollower />
             <Navigation />
             <div className="relative min-h-screen">{children}</div>
           </Suspense>

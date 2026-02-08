@@ -2,7 +2,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, Terminal, Download, Sun, ArrowRight } from "lucide-react";
+import { ArrowDown, Terminal, Download } from "lucide-react";
 import Scene from "@/components/3d/Scene";
 import ErrorBoundary from "../ErrorBoundary";
 
@@ -128,18 +128,6 @@ export default function Hero() {
                   Resume
                 </a>
               </div>
-
-              {/* Row 2: Subtle "Solar System" Link */}
-              <a
-                href="/solar/index.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400 transition-colors"
-              >
-                <Sun className="w-4 h-4 group-hover:rotate-180 transition-transform duration-700" />
-                <span>Explore 3D Solar System</span>
-                <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-              </a>
             </motion.div>
           </motion.div>
         </div>
