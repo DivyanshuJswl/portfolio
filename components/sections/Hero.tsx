@@ -58,7 +58,7 @@ export default function Hero() {
               </span>
               <span className="text-xs md:text-sm font-mono tracking-wider font-semibold text-slate-700 dark:text-slate-200">
                 AVAILABLE FOR HIRE&nbsp;|&nbsp;
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-teal-500 dark:from-indigo-400 dark:to-cyan-400">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 to-indigo-500 dark:from-indigo-300 dark:to-slate-200">
                   @Bangalore, India
                 </span>
               </span>
@@ -69,7 +69,7 @@ export default function Hero() {
               className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 text-slate-900 dark:text-white"
             >
               Divyanshu <br className="hidden lg:block" />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-teal-500 dark:from-indigo-400 dark:to-cyan-400">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 to-indigo-500 dark:from-indigo-300 dark:to-slate-200">
                 Jaiswal
               </span>
             </motion.h1>
@@ -111,7 +111,7 @@ export default function Hero() {
               <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                 <a
                   href="#lab"
-                  className="px-8 py-4 rounded-xl font-bold shadow-xl transition-all duration-300 min-w-[160px] bg-slate-900 text-white hover:bg-slate-800 dark:bg-gradient-to-r dark:from-indigo-600 dark:to-blue-600 dark:hover:shadow-indigo-500/25 flex items-center justify-center text-center"
+                  className="px-8 py-4 rounded-xl font-bold shadow-xl transition-all duration-300 min-w-[160px] bg-slate-900 text-white hover:bg-slate-800 dark:bg-gradient-to-r dark:from-indigo-600 dark:to-indigo-500 dark:hover:shadow-indigo-500/25 flex items-center justify-center text-center"
                 >
                   View Projects
                 </a>

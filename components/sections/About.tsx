@@ -55,7 +55,7 @@ export default function About() {
           >
             <h2 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
               About my <br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-teal-500 dark:from-indigo-400 dark:to-cyan-400">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 to-indigo-500 dark:from-indigo-300 dark:to-slate-200">
                 Architecture.
               </span>
             </h2>
@@ -95,7 +95,7 @@ export default function About() {
                   key={stat.label}
                   className="text-center p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-200 dark:border-white/5"
                 >
-                  <div className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-teal-500 dark:from-indigo-400 dark:to-cyan-400">
+                  <div className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 to-indigo-500 dark:from-indigo-300 dark:to-slate-200">
                     {stat.value}
                   </div>
                   <div className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-500 mt-1">

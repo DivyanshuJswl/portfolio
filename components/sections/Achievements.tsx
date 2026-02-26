@@ -12,7 +12,7 @@ const achievements = [
     description:
       "Top 7% globally. Solved 550+ problems with consistent daily streaks.",
     icon: Code,
-    color: "from-orange-400 to-amber-600",
+    color: "from-orange-400 to-amber-500",
     image:
       "https://res.cloudinary.com/dh5cebjwj/image/upload/f_auto,q_auto/v1769899707/Screenshot_2026-02-01_at_4.17.34_AM_lqzunt.png",
   },
@@ -23,7 +23,7 @@ const achievements = [
     description:
       "Built 'EcoSync', an AI-powered waste management system in 8 hours.",
     icon: Trophy,
-    color: "from-indigo-500 to-purple-600",
+    color: "from-indigo-500 to-indigo-600",
     image:
       "https://res.cloudinary.com/dh5cebjwj/image/upload/f_auto,q_auto/v1769899950/1747112488761_dhxb4m.jpg",
   },
@@ -69,7 +69,7 @@ export default function Achievements() {
             transition={{ duration: 0.4 }}
           >
             Hall of{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-teal-500 dark:from-indigo-400 dark:to-cyan-400">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 to-indigo-500 dark:from-indigo-300 dark:to-slate-200">
               Fame
             </span>
           </motion.h2>
@@ -91,8 +91,6 @@ export default function Achievements() {
               transition={{ duration: 0.4, delay: idx * 0.08 }}
               className="relative group cursor-pointer"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-[2rem] blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
-
               <div className="relative h-full glass rounded-[2rem] p-8 border border-white/20 dark:border-white/5 hover:border-indigo-500/30 transition-all duration-300 overflow-hidden">
                 {/* Background Image (Subtle) */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">

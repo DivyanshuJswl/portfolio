@@ -90,7 +90,7 @@ export default function Contact() {
               transition={{ duration: 0.4, delay: 0.1 }}
             >
               Let&apos;s build the <br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-teal-500 dark:from-indigo-400 dark:to-cyan-400">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 to-indigo-500 dark:from-indigo-300 dark:to-slate-200">
                 Next Big Thing
               </span>
             </motion.h2>

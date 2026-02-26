@@ -215,7 +215,7 @@ export default function ChatInterface() {
         whileTap={{ scale: 0.95 }}
         aria-label="Toggle Chat"
       >
-        <div className="relative flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-indigo-600 to-teal-500 text-white shadow-2xl shadow-indigo-500/40 overflow-hidden border border-white/20">
+        <div className="relative flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-indigo-600 to-indigo-500 text-white shadow-2xl shadow-indigo-500/30 overflow-hidden border border-white/20">
           <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           {!isChatOpen && messages.length === 0 && (
             <span className="absolute inset-0 rounded-full border border-white/50 animate-ping opacity-50" />
@@ -256,11 +256,11 @@ export default function ChatInterface() {
             <div className="flex items-center justify-between px-5 py-3.5 shrink-0 relative overflow-hidden
               border-b border-slate-200 dark:border-slate-700/60
               bg-slate-50 dark:bg-slate-800/80">
-              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/5 via-transparent to-teal-500/5" />
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/5 via-transparent to-indigo-500/5" />
 
               <div className="flex items-center gap-3 relative z-10">
                 <div className="relative">
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-teal-500 flex items-center justify-center shadow-md shadow-indigo-500/20 ring-1 ring-white/20">
+                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center shadow-md shadow-indigo-500/15 ring-1 ring-white/20">
                     <Cpu className="text-white" style={{ width: 18, height: 18 }} />
                   </div>
                   <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3
@@ -383,7 +383,7 @@ export default function ChatInterface() {
                     >
                       {/* AI avatar */}
                       {message.role === "assistant" && (
-                        <div className="w-7 h-7 rounded-xl bg-gradient-to-br from-indigo-500 to-teal-500 flex items-center justify-center shrink-0 shadow-sm mb-4">
+                        <div className="w-7 h-7 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center shrink-0 shadow-sm mb-4">
                           <Cpu className="text-white" style={{ width: 13, height: 13 }} />
                         </div>
                       )}
@@ -392,7 +392,7 @@ export default function ChatInterface() {
                         <div
                           className={`rounded-2xl px-4 py-3 shadow-sm border ${
                             message.role === "user"
-                              ? "bg-gradient-to-br from-indigo-600 to-teal-500 text-white rounded-br-sm border-transparent shadow-indigo-500/20"
+                              ? "bg-gradient-to-br from-indigo-600 to-indigo-500 text-white rounded-br-sm border-transparent shadow-indigo-500/15"
                               : "rounded-bl-sm text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700"
                           }`}
                         >
@@ -433,7 +433,7 @@ export default function ChatInterface() {
                       animate={{ opacity: 1, y: 0 }}
                       className="flex items-end gap-2 justify-start"
                     >
-                      <div className="w-7 h-7 rounded-xl bg-gradient-to-br from-indigo-500 to-teal-500 flex items-center justify-center shrink-0 shadow-sm">
+                      <div className="w-7 h-7 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center shrink-0 shadow-sm">
                         <Cpu className="text-white" style={{ width: 13, height: 13 }} />
                       </div>
                       <div className="px-4 py-3 rounded-2xl rounded-bl-sm shadow-sm border
@@ -493,7 +493,7 @@ export default function ChatInterface() {
                       disabled={!input.trim() || isThinking}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="p-3 rounded-2xl bg-gradient-to-br from-indigo-600 to-teal-500 text-white shadow-lg shadow-indigo-500/25
+                      className="p-3 rounded-2xl bg-gradient-to-br from-indigo-600 to-indigo-500 text-white shadow-lg shadow-indigo-500/20
                                disabled:opacity-40 disabled:shadow-none disabled:cursor-not-allowed
                                transition-opacity flex items-center justify-center shrink-0"
                       aria-label="Send Message"

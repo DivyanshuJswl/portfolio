@@ -102,7 +102,7 @@ export default function Experience() {
             transition={{ duration: 0.4 }}
           >
             Career{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-teal-500 dark:from-indigo-400 dark:to-cyan-400">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 to-indigo-500 dark:from-indigo-300 dark:to-slate-200">
               Timeline
             </span>
           </motion.h2>
@@ -118,7 +118,7 @@ export default function Experience() {
 
           {/* Central Line (Progress - Animated) */}
           <motion.div
-            className="absolute left-4 md:left-1/2 top-0 w-1 md:-ml-0.5 bg-gradient-to-b from-indigo-500 via-purple-500 to-teal-500 rounded-full origin-top"
+            className="absolute left-4 md:left-1/2 top-0 w-1 md:-ml-0.5 bg-gradient-to-b from-indigo-500 to-indigo-400 rounded-full origin-top"
             style={{ scaleY: scrollYProgress, bottom: 0 }}
           />
 

@@ -79,7 +79,7 @@ export default function Navigation() {
           {/* 1. Logo Section */}
           <div className="flex-shrink-0 flex items-center">
             <a href="#" onClick={() => setActiveSection("Home")} className="relative group z-50">
-              <span className="text-2xl font-bold bg-clip-text bg-gradient-to-r from-indigo-600 to-teal-500 dark:from-indigo-400 dark:to-cyan-400">
+              <span className="text-2xl font-bold bg-clip-text bg-gradient-to-r from-indigo-700 to-indigo-500 dark:from-indigo-300 dark:to-slate-200">
                 DivyanshuJ
                 <span className="text-slate-900 dark:text-white">.</span>
               </span>
