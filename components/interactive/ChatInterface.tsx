@@ -443,17 +443,17 @@ export default function ChatInterface() {
                           <motion.span
                             animate={{ scale: [1, 1.4, 1], opacity: [0.4, 1, 0.4] }}
                             transition={{ repeat: Infinity, duration: 0.9, ease: "easeInOut", delay: 0 }}
-                            className="w-1.5 h-1.5 bg-indigo-500 rounded-full"
+                            className="w-1.5 h-1.5 bg-indigo-400 rounded-full"
                           />
                           <motion.span
                             animate={{ scale: [1, 1.4, 1], opacity: [0.4, 1, 0.4] }}
                             transition={{ repeat: Infinity, duration: 0.9, ease: "easeInOut", delay: 0.18 }}
-                            className="w-1.5 h-1.5 bg-teal-500 rounded-full"
+                            className="w-1.5 h-1.5 bg-indigo-400 rounded-full"
                           />
                           <motion.span
                             animate={{ scale: [1, 1.4, 1], opacity: [0.4, 1, 0.4] }}
                             transition={{ repeat: Infinity, duration: 0.9, ease: "easeInOut", delay: 0.36 }}
-                            className="w-1.5 h-1.5 bg-purple-500 rounded-full"
+                            className="w-1.5 h-1.5 bg-indigo-400 rounded-full"
                           />
                         </div>
                       </div>

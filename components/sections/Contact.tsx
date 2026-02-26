@@ -196,7 +196,7 @@ export default function Contact() {
                   ? "bg-emerald-500 text-white cursor-default"
                   : status === "error"
                   ? "bg-red-500 text-white"
-                  : "bg-gradient-to-r from-indigo-600 to-blue-600 text-white hover:shadow-lg hover:shadow-indigo-500/30 hover:scale-[1.02]"
+                  : "bg-gradient-to-r from-indigo-600 to-indigo-500 text-white hover:shadow-lg hover:shadow-indigo-500/20 hover:scale-[1.02]"
               }`}
             >
               {status === "submitting" ? (

@@ -248,7 +248,7 @@ export default function Lab() {
                 {/* Challenge/Solution - Hover Reveal */}
                 <div className="mb-6 p-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 text-xs">
                   <div className="mb-2">
-                    <span className="font-bold text-red-400 uppercase">
+                    <span className="font-bold text-rose-500 dark:text-rose-400 uppercase">
                       Challenge:{" "}
                     </span>
                     <span className="text-slate-600 dark:text-slate-400">
@@ -256,7 +256,7 @@ export default function Lab() {
                     </span>
                   </div>
                   <div>
-                    <span className="font-bold text-green-400 uppercase">
+                    <span className="font-bold text-emerald-600 dark:text-emerald-500 uppercase">
                       Solution:{" "}
                     </span>
                     <span className="text-slate-600 dark:text-slate-400">

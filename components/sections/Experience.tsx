@@ -137,7 +137,7 @@ export default function Experience() {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4 }}
-                    className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-slate-50 dark:bg-[#030014] border-4 border-indigo-500 shadow-[0_0_20px_rgba(99,102,241,0.5)] flex items-center justify-center"
+                    className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-slate-50 dark:bg-[#030014] border-4 border-indigo-500 shadow-[0_0_12px_rgba(99,102,241,0.25)] flex items-center justify-center"
                   >
                     <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-indigo-500" />
                   </motion.div>

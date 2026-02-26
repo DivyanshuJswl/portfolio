@@ -94,12 +94,12 @@ export default function Hero() {
                 Zopsmart
               </span>{" "}
               with{" "}
-              <span className="text-indigo-600 dark:text-cyan-300">Go</span>,{" "}
+              <span className="text-indigo-600 dark:text-indigo-300">Go</span>,{" "}
               <span className="text-indigo-600 dark:text-indigo-300">
                 Kafka
               </span>
               , and{" "}
-              <span className="text-indigo-600 dark:text-blue-300">Docker</span>
+              <span className="text-indigo-600 dark:text-indigo-300">Docker</span>
               .
             </motion.p>
 
