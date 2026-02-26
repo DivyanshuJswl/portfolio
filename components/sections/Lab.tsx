@@ -1,6 +1,4 @@
 // components/sections/Lab.tsx
-"use client";
-
 import { motion } from "framer-motion";
 import {
   Server,
@@ -11,7 +9,6 @@ import {
   Activity,
   Layers,
 } from "lucide-react";
-import Image from "next/image";
 
 const projects = [
   {
@@ -52,7 +49,7 @@ const projects = [
     featured: true,
     icon: Globe,
     image:
-      "https://res.cloudinary.com/dh5cebjwj/image/upload/v1769904970/Screenshot_2026-02-01_at_5.45.48_AM_yfk7k5.png",
+      "https://res.cloudinary.com/dh5cebjwj/image/upload/f_auto,q_auto/v1769904970/Screenshot_2026-02-01_at_5.45.48_AM_yfk7k5.png",
   },
   {
     title: "VisionCare",
@@ -178,11 +175,12 @@ export default function Lab() {
             >
               {/* 1. Project Image Area */}
               <div className="relative w-full h-48 sm:h-56 overflow-hidden">
-                <Image
+                <img
                   src={project.image}
                   alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-102"
+                  loading="lazy"
+                  decoding="async"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105 absolute inset-0 w-full h-full"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-[#0B1120] to-transparent opacity-80" />
 
@@ -208,6 +206,7 @@ export default function Lab() {
                           href={project.links.github}
                           target="_blank"
                           rel="noopener noreferrer"
+                          aria-label={`View ${project.title} source code`}
                           className="p-2 bg-slate-100 dark:bg-white/10 rounded-full hover:bg-indigo-600 hover:text-white transition-all shadow-sm"
                         >
                           <GitBranch className="w-4 h-4" />
@@ -223,6 +222,7 @@ export default function Lab() {
                           href={project.links.live}
                           target="_blank"
                           rel="noopener noreferrer"
+                          aria-label={`View ${project.title} live demo`}
                           className="p-2 bg-slate-100 dark:bg-white/10 rounded-full hover:bg-emerald-500 hover:text-white transition-all shadow-sm"
                         >
                           <ArrowUpRight className="w-4 h-4" />

@@ -1,5 +1,3 @@
-"use client";
-
 import { Canvas } from "@react-three/fiber";
 import {
   OrbitControls,
@@ -25,7 +23,7 @@ function SceneLoader() {
 }
 
 export default function Scene({ section }: SceneProps) {
-  const [dpr, setDpr] = useState([1, 2]);
+  const [dpr, setDpr] = useState<[number, number]>([1, 2]);
 
   useEffect(() => {
     const pixelRatio = Math.min(window.devicePixelRatio, 1.5);
@@ -37,7 +35,7 @@ export default function Scene({ section }: SceneProps) {
       <Canvas
         frameloop="always"
         shadows={false}
-        dpr={dpr as [min: number, max: number]}
+        dpr={dpr}
         gl={{
           alpha: true,
           antialias: true,
@@ -78,7 +76,6 @@ export default function Scene({ section }: SceneProps) {
         <OrbitControls
           enableZoom={false}
           enablePan={false}
-          enableRotate={true}
           maxPolarAngle={Math.PI / 1.8}
           minPolarAngle={Math.PI / 2.5}
         />

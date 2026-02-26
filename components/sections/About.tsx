@@ -1,9 +1,6 @@
 // components/sections/About.tsx
-"use client";
-
 import { motion } from "framer-motion";
-import { Code2, Cpu, Rocket, Award, Terminal, Zap, Coffee } from "lucide-react";
-import Image from "next/image";
+import { Code2, Cpu, Rocket, Award } from "lucide-react";
 
 const highlights = [
   {
@@ -49,9 +46,11 @@ export default function About() {
         {/* 1. Split Layout */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center mb-16 lg:mb-24">
           {/* Left Column: Text */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="flex-1 space-y-6"
           >
             <h2 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
@@ -93,7 +92,7 @@ export default function About() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {stats.map((stat, idx) => (
                 <div
-                  key={idx}
+                  key={stat.label}
                   className="text-center p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-200 dark:border-white/5"
                 >
                   <div className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-teal-500 dark:from-indigo-400 dark:to-cyan-400">
@@ -121,31 +120,34 @@ export default function About() {
               <div className="grid grid-cols-3 gap-3">
                 {/* Image 1 */}
                 <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden border-2 border-white dark:border-[#0B1120] shadow-lg">
-                  <Image
-                    src="https://res.cloudinary.com/dh5cebjwj/image/upload/v1769902633/IMG_20260105_123558_bvm3cc.jpg"
+                  <img
+                    src="https://res.cloudinary.com/dh5cebjwj/image/upload/f_auto,q_auto/v1769902633/IMG_20260105_123558_bvm3cc.jpg"
                     alt="Divyanshu Profile"
-                    fill
-                    className="object-cover"
+                    loading="lazy"
+                    decoding="async"
+                    className="object-cover absolute inset-0 w-full h-full"
                   />
                 </div>
 
                 {/* Image 2 */}
                 <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden border-2 border-white dark:border-[#0B1120] shadow-lg">
-                  <Image
-                    src="https://res.cloudinary.com/dh5cebjwj/image/upload/v1769901905/1745077103832_hd0jhb.jpg"
+                  <img
+                    src="https://res.cloudinary.com/dh5cebjwj/image/upload/f_auto,q_auto/v1769901905/1745077103832_hd0jhb.jpg"
                     alt="Coding Setup"
-                    fill
-                    className="object-cover"
+                    loading="lazy"
+                    decoding="async"
+                    className="object-cover absolute inset-0 w-full h-full"
                   />
                 </div>
 
                 {/* Image 3 */}
                 <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden border-2 border-white dark:border-[#0B1120] shadow-lg">
-                  <Image
-                    src="https://res.cloudinary.com/dh5cebjwj/image/upload/v1769901830/1747112493150_d0dyep.jpg"
+                  <img
+                    src="https://res.cloudinary.com/dh5cebjwj/image/upload/f_auto,q_auto/v1769901830/1747112493150_d0dyep.jpg"
                     alt="Code Details"
-                    fill
-                    className="object-cover opacity-90"
+                    loading="lazy"
+                    decoding="async"
+                    className="object-cover opacity-90 absolute inset-0 w-full h-full"
                   />
                 </div>
               </div>
@@ -156,29 +158,32 @@ export default function About() {
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-indigo-500/10 to-teal-500/10 rounded-full blur-[100px] -z-10" />
 
               <div className="absolute top-0 right-0 w-80 h-[500px] rounded-[2.5rem] overflow-hidden border-4 border-white dark:border-[#0B1120] shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-700 z-10 hover:z-30">
-                <Image
-                  src="https://res.cloudinary.com/dh5cebjwj/image/upload/v1769902633/IMG_20260105_123558_bvm3cc.jpg"
+                <img
+                  src="https://res.cloudinary.com/dh5cebjwj/image/upload/f_auto,q_auto/v1769902633/IMG_20260105_123558_bvm3cc.jpg"
                   alt="Divyanshu Profile"
-                  fill
-                  className="object-cover"
+                  loading="lazy"
+                  decoding="async"
+                  className="object-cover absolute inset-0 w-full h-full"
                 />
               </div>
 
               <div className="absolute bottom-10 left-0 w-96 h-64 rounded-[2.5rem] overflow-hidden border-4 border-white dark:border-[#0B1120] shadow-2xl -rotate-3 hover:rotate-0 transition-transform duration-700 z-20 hover:z-30">
-                <Image
-                  src="https://res.cloudinary.com/dh5cebjwj/image/upload/v1769901905/1745077103832_hd0jhb.jpg"
+                <img
+                  src="https://res.cloudinary.com/dh5cebjwj/image/upload/f_auto,q_auto/v1769901905/1745077103832_hd0jhb.jpg"
                   alt="Coding Setup"
-                  fill
-                  className="object-cover"
+                  loading="lazy"
+                  decoding="async"
+                  className="object-cover absolute inset-0 w-full h-full"
                 />
               </div>
 
               <div className="absolute top-32 left-10 w-48 h-48 rounded-[2rem] overflow-hidden border-4 border-white dark:border-[#0B1120] shadow-xl -rotate-12 hover:rotate-0 transition-transform duration-700 z-0 hover:z-30">
-                <Image
-                  src="https://res.cloudinary.com/dh5cebjwj/image/upload/v1769901830/1747112493150_d0dyep.jpg"
+                <img
+                  src="https://res.cloudinary.com/dh5cebjwj/image/upload/f_auto,q_auto/v1769901830/1747112493150_d0dyep.jpg"
                   alt="Code Details"
-                  fill
-                  className="object-cover opacity-90"
+                  loading="lazy"
+                  decoding="async"
+                  className="object-cover opacity-90 absolute inset-0 w-full h-full"
                 />
               </div>
             </div>

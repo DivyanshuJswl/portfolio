@@ -1,4 +1,3 @@
-"use client";
 
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -29,7 +28,7 @@ export default function Contact() {
 
     const object = {
       ...formData,
-      access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY, 
+      access_key: import.meta.env.VITE_WEB3FORMS_KEY,
       subject: "New Portfolio Message from " + formData.name,
     };
 
@@ -45,6 +44,7 @@ export default function Contact() {
         body: json,
       });
 
+      if (!res.ok) throw new Error('HTTP ' + res.status);
       const result = await res.json();
 
       if (result.success) {
@@ -133,15 +133,17 @@ export default function Contact() {
           {/* Right Side: Form */}
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Honeypot for spam protection */}
-            <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
+            <input type="checkbox" name="botcheck" className="hidden" />
 
             <div className="space-y-2">
-              <label className="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">
+              <label htmlFor="contact-name" className="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">
                 Your Name
               </label>
               <input
+                id="contact-name"
                 type="text"
                 name="name"
+                autoComplete="name"
                 required
                 value={formData.name}
                 onChange={handleChange}
@@ -150,12 +152,14 @@ export default function Contact() {
               />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">
+              <label htmlFor="contact-email" className="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">
                 Email Address
               </label>
               <input
+                id="contact-email"
                 type="email"
                 name="email"
+                autoComplete="email"
                 required
                 value={formData.email}
                 onChange={handleChange}
@@ -164,12 +168,14 @@ export default function Contact() {
               />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">
+              <label htmlFor="contact-message" className="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">
                 Message
               </label>
               <textarea
+                id="contact-message"
                 rows={4}
                 name="message"
+                autoComplete="off"
                 required
                 value={formData.message}
                 onChange={handleChange}

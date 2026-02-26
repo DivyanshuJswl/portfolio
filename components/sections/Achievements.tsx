@@ -1,10 +1,8 @@
 // components/sections/Achievements.tsx
-"use client";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Trophy, Code, Award, Star, Zap, X } from "lucide-react";
-import Image from "next/image";
 
 const achievements = [
   {
@@ -16,7 +14,7 @@ const achievements = [
     icon: Code,
     color: "from-orange-400 to-amber-600",
     image:
-      "https://res.cloudinary.com/dh5cebjwj/image/upload/v1769899707/Screenshot_2026-02-01_at_4.17.34_AM_lqzunt.png",
+      "https://res.cloudinary.com/dh5cebjwj/image/upload/f_auto,q_auto/v1769899707/Screenshot_2026-02-01_at_4.17.34_AM_lqzunt.png",
   },
   {
     id: "hackathon",
@@ -27,7 +25,7 @@ const achievements = [
     icon: Trophy,
     color: "from-indigo-500 to-purple-600",
     image:
-      "https://res.cloudinary.com/dh5cebjwj/image/upload/v1769899950/1747112488761_dhxb4m.jpg",
+      "https://res.cloudinary.com/dh5cebjwj/image/upload/f_auto,q_auto/v1769899950/1747112488761_dhxb4m.jpg",
   },
   {
     id: "codechef",
@@ -38,7 +36,7 @@ const achievements = [
     icon: Star,
     color: "from-emerald-400 to-teal-600",
     image:
-      "https://res.cloudinary.com/dh5cebjwj/image/upload/v1769900175/Screenshot_2026-02-01_at_4.26.03_AM_gzaai8.png",
+      "https://res.cloudinary.com/dh5cebjwj/image/upload/f_auto,q_auto/v1769900175/Screenshot_2026-02-01_at_4.26.03_AM_gzaai8.png",
   },
 ];
 
@@ -95,11 +93,12 @@ export default function Achievements() {
               <div className="relative h-full glass rounded-[2rem] p-8 border border-white/20 dark:border-white/5 hover:border-indigo-500/30 transition-all duration-300 overflow-hidden">
                 {/* Background Image (Subtle) */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
-                  <Image
+                  <img
                     src={item.image}
                     alt={item.title}
-                    fill
-                    className="object-cover"
+                    loading="lazy"
+                    decoding="async"
+                    className="object-cover absolute inset-0 w-full h-full"
                   />
                 </div>
 
@@ -158,36 +157,38 @@ export default function Achievements() {
                 <div className="grid md:grid-cols-2 h-[60vh] md:h-[500px]">
                   {/* Image Side */}
                   <div className="relative h-64 md:h-full w-full bg-slate-800">
-                    <Image
+                    <img
                       src={
                         achievements.find((a) => a.id === selectedId)?.image ||
                         ""
                       }
                       alt="Achievement Proof"
-                      fill
-                      className="object-cover"
+                      loading="lazy"
+                      decoding="async"
+                      className="object-cover absolute inset-0 w-full h-full"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   </div>
 
                   {/* Content Side */}
                   <div className="p-8 md:p-12 flex flex-col justify-center">
-                    {achievements.map(
-                      (item) =>
-                        item.id === selectedId && (
-                          <div key={item.id}>
-                            <h3 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-                              {item.title}
-                            </h3>
-                            <p className="text-xl text-indigo-600 dark:text-indigo-400 font-semibold mb-6">
-                              {item.metric}
-                            </p>
-                            <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
-                              {item.description}
-                            </p>
-                          </div>
-                        ),
-                    )}
+                    {(() => {
+                      const item = achievements.find((a) => a.id === selectedId);
+                      if (!item) return null;
+                      return (
+                        <div>
+                          <h3 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+                            {item.title}
+                          </h3>
+                          <p className="text-xl text-indigo-600 dark:text-indigo-400 font-semibold mb-6">
+                            {item.metric}
+                          </p>
+                          <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
+                            {item.description}
+                          </p>
+                        </div>
+                      );
+                    })()}
                   </div>
                 </div>
               </motion.div>

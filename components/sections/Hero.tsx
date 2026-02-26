@@ -1,6 +1,4 @@
 // components/sections/Hero.tsx
-"use client";
-
 import { motion } from "framer-motion";
 import { ArrowDown, Terminal, Download } from "lucide-react";
 import Scene from "@/components/3d/Scene";

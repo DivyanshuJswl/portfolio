@@ -1,12 +1,12 @@
 {
-  "name": "claude-2",
+  "name": "portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "concurrently \"vite\" \"tsx --env-file .env api/dev-server.ts\"",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "lint": "eslint src components hooks lib"
   },
   "dependencies": {
     "@react-three/drei": "^9.105.0",
@@ -14,8 +14,6 @@
     "framer-motion": "^11.0.0",
     "groq-sdk": "^0.3.0",
     "lucide-react": "^0.365.0",
-    "next": "14.2.0",
-    "next-themes": "^0.3.0",
     "react": "18.3.0",
     "react-dom": "18.3.0",
     "three": "^0.164.0",
@@ -29,18 +27,20 @@
     "@types/three": "^0.164.0",
     "@typescript-eslint/eslint-plugin": "^8.54.0",
     "@typescript-eslint/parser": "^8.54.0",
+    "@vitejs/plugin-react": "^4.3.0",
     "autoprefixer": "^10.4.19",
     "eslint": "^9.39.2",
-    "eslint-config-next": "^16.1.6",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^17.2.0",
-    "jiti": "^2.6.1",
     "postcss": "^8.4.38",
     "prettier": "^3.8.1",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.54.0"
+    "typescript-eslint": "^8.54.0",
+    "vite": "^5.4.0",
+    "tsx": "^4.19.0",
+    "concurrently": "^9.1.0"
   }
 }

@@ -49,10 +49,11 @@ export const useChatStore = create<ChatStore>((set, get) => ({
         }),
       });
       
+      if (!response.ok) throw new Error('HTTP ' + response.status);
       const data = await response.json();
       addMessage({
         role: 'assistant',
-        content: data.message,
+        content: data.message ?? 'No response received.',
         timestamp: Date.now(),
       });
     } catch (error) {

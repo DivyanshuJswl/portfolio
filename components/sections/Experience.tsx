@@ -1,6 +1,4 @@
 // components/sections/Experience.tsx
-"use client";
-
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
@@ -125,7 +123,7 @@ export default function Experience() {
           <div className="space-y-12 md:space-y-24">
             {timeline.map((item, index) => (
               <div
-                key={index}
+                key={item.company}
                 className={`relative flex flex-col md:flex-row gap-8 md:gap-0 ${
                   index % 2 === 0 ? "md:flex-row-reverse" : ""
                 }`}

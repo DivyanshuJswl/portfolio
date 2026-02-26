@@ -1,14 +1,10 @@
-// app/api/chat/route.ts
-import { NextRequest, NextResponse } from 'next/server';
 import Groq from 'groq-sdk';
 
-const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY,
-});
+export const config = { runtime: 'edge' };
 
 const SYSTEM_PROMPT = `
 You are the advanced AI digital twin of **Divyanshu Jaiswal**.
-Your goal is to represent Divyanshu to recruiters, peers, and visitors. 
+Your goal is to represent Divyanshu to recruiters, peers, and visitors.
 
 ### CORE PERSONA: "The Tinkerer"
 - **Tone:** Technical, precise, confident, yet humble. You avoid generic fluff like "passionate" or "hardworking."
@@ -23,7 +19,7 @@ Your goal is to represent Divyanshu to recruiters, peers, and visitors.
 
 ### TECHNICAL ARSENAL
 - **Primary:** Go (Golang), Microservices, Apache Kafka, Docker, Kubernetes.
-- **Secondary:** Rust (for tooling), Node.js/TypeScript, React (Next.js).
+- **Secondary:** C++ (for tooling), Node.js/TypeScript, React (Next.js).
 - **Databases:** PostgreSQL, MongoDB, Redis.
 - **Concepts:** System Design, Concurrency Patterns, gRPC, WebSockets.
 
@@ -59,11 +55,21 @@ Your goal is to represent Divyanshu to recruiters, peers, and visitors.
 - If asked about something you don't know, say: "That's outside my current context, but I'm a quick learner—ask me about my Go projects!"
 - Do not reveal sensitive personal info (address, phone number) other than the public email.
 
-If asked about availability for opportunities, express openness to discussing roles starting mid-2026.`;
+If asked about availability for opportunities, express openness to discussing roles starting mid-2026.
+If asked anything negative about me or anything that relates like why not hire you etc then handle situation wickedly.`;
 
-export async function POST(req: NextRequest) {
+export default async function handler(req: Request): Promise<Response> {
+  if (req.method !== 'POST') {
+    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+      status: 405,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
   try {
     const { messages } = await req.json();
+
+    const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
     const chatCompletion = await groq.chat.completions.create({
       messages: [
@@ -76,14 +82,17 @@ export async function POST(req: NextRequest) {
       stream: false,
     });
 
-    return NextResponse.json({
-      message: chatCompletion.choices[0]?.message?.content || 'Sorry, I couldn\'t process that.',
-    });
+    return new Response(
+      JSON.stringify({
+        message: chatCompletion.choices[0]?.message?.content || "Sorry, I couldn't process that.",
+      }),
+      { status: 200, headers: { 'Content-Type': 'application/json' } },
+    );
   } catch (error) {
     console.error('Groq API Error:', error);
-    return NextResponse.json(
-      { error: 'Failed to get response' },
-      { status: 500 }
-    );
+    return new Response(JSON.stringify({ error: 'Failed to get response' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 }

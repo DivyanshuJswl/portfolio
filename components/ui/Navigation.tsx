@@ -1,4 +1,3 @@
-"use client";
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -19,36 +18,43 @@ export default function Navigation() {
   const [activeSection, setActiveSection] = useState("Home");
 
   useEffect(() => {
+    // Persists across scroll events without causing re-renders
+    let lastActive = "Home";
+
     const handleScroll = () => {
       // 1. Determine Scrolled State
       setScrolled(window.scrollY > 20);
 
-      // 2. Determine Active Section
-      let currentSection = "Home";
+      // 2. Short-circuit at the very top
+      if (window.scrollY < 100) {
+        lastActive = "Home";
+        setActiveSection("Home");
+        return;
+      }
+
+      // 3. Determine Active Section from nav items only
       const sections = navItems
         .map((item) => item.href.substring(1))
-        .filter((id) => id.length > 0); // Filter out empty strings from '#'
+        .filter((id) => id.length > 0);
 
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          // If the top of the section is near the top of the viewport
           if (rect.top <= 150 && rect.bottom >= 150) {
-            currentSection =
-              navItems.find((item) => item.href === `#${section}`)?.name || "Home";
+            lastActive =
+              navItems.find((item) => item.href === `#${section}`)?.name || lastActive;
             break;
           }
         }
       }
-      
-      // Explicitly set Home if at the very top
-      if (window.scrollY < 100) currentSection = "Home";
-      
-      setActiveSection(currentSection);
+
+      // If no section matched (e.g. while scrolling through Achievements),
+      // keep lastActive so the nav doesn't jump back to Home.
+      setActiveSection(lastActive);
     };
 
-    // Run immediately on mount to fix "clipping" on refresh
+    // Run immediately on mount
     handleScroll();
 
     window.addEventListener("scroll", handleScroll);

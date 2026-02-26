@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Divyanshu Jaiswal | Backend Engineer &amp; System Architect</title>
+    <meta
+      name="description"
+      content="SDE Intern at Zopsmart specializing in Go, Kafka, Docker, and microservices architecture."
+    />
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Prevent theme flash before React mounts -->
+    <script>
+      (function () {
+        var theme = localStorage.getItem('portfolio-theme') || 'dark';
+        document.documentElement.classList.add(theme);
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
+
+    <!-- Preload 3D model: starts downloading before JS executes -->
+    <link rel="preload" href="/models/robot.glb" as="fetch" crossorigin />
+
+    <!-- Preconnect: fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Preconnect: image CDNs -->
+    <link rel="preconnect" href="https://res.cloudinary.com" />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="font-sans antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

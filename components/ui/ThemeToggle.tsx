@@ -1,8 +1,6 @@
 // components/ui/ThemeToggle.tsx
-"use client";
-
 import { Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
+import { useTheme } from "@/components/providers/ThemeProvider";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
@@ -11,7 +9,7 @@ export default function ThemeToggle({
 }: {
   className?: string;
 }) {
-  const { theme, setTheme, systemTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -20,9 +18,7 @@ export default function ThemeToggle({
 
   if (!mounted) return <div className={`w-[46px] h-[46px] ${className}`} />;
 
-  const currentTheme = theme === "system" ? systemTheme : theme;
-  const toggleTheme = () =>
-    setTheme(currentTheme === "dark" ? "light" : "dark");
+  const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
 
   return (
     <motion.button
@@ -40,10 +36,10 @@ export default function ThemeToggle({
     >
       <motion.div
         initial={false}
-        animate={{ rotate: currentTheme === "dark" ? 0 : 180 }}
+        animate={{ rotate: theme === "dark" ? 0 : 180 }}
         transition={{ duration: 0.5, type: "spring" }}
       >
-        {currentTheme === "dark" ? (
+        {theme === "dark" ? (
           <Sun className="w-5 h-5" />
         ) : (
           <Moon className="w-5 h-5" />
