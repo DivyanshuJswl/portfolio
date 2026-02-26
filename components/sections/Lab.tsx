@@ -28,7 +28,7 @@ const projects = [
     featured: true,
     icon: Server,
     image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop",
+      "https://res.cloudinary.com/dh5cebjwj/image/upload/f_auto,q_auto/v1772137522/microservices_wot8r1.jpg",
   },
   {
     title: "Uni Event Hub",

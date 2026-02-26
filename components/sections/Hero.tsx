@@ -57,9 +57,9 @@ export default function Hero() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
               <span className="text-xs md:text-sm font-mono tracking-wider font-semibold text-slate-700 dark:text-slate-200">
-                AVAILABLE FOR HIRE&nbsp;|&nbsp;
+                {/* AVAILABLE FOR HIRE&nbsp;|&nbsp; */}
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 to-indigo-500 dark:from-indigo-300 dark:to-slate-200">
-                  @Bangalore, India
+                  Bangalore, India
                 </span>
               </span>
             </motion.div>
