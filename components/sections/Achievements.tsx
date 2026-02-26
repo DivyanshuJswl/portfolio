@@ -53,18 +53,20 @@ export default function Achievements() {
         {/* Header */}
         <div className="text-center mb-20">
           <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
             className="inline-block p-4 rounded-full bg-amber-500/10 mb-6 border border-amber-500/20"
           >
             <Trophy className="w-8 h-8 text-amber-500" />
           </motion.div>
           <motion.h2
             className="text-5xl md:text-7xl font-bold mb-6 text-slate-900 dark:text-white tracking-tight"
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
           >
             Hall of{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-teal-500 dark:from-indigo-400 dark:to-cyan-400">
@@ -83,10 +85,10 @@ export default function Achievements() {
               key={item.id}
               layoutId={`card-${item.id}`}
               onClick={() => setSelectedId(item.id)}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
+              transition={{ duration: 0.4, delay: idx * 0.08 }}
               className="relative group cursor-pointer"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-[2rem] blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500" />

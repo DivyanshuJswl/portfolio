@@ -71,9 +71,10 @@ export default function Contact() {
     >
       <motion.div
         className="max-w-5xl mx-auto w-full glass rounded-3xl md:rounded-[2.5rem] p-6 md:p-16 relative overflow-hidden border border-white/20 dark:border-white/5 bg-white/30 dark:bg-slate-900/30 backdrop-blur-xl"
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 8 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
+        transition={{ duration: 0.4 }}
       >
         {/* Decorative Gradient inside card */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl -z-10" />
@@ -83,9 +84,9 @@ export default function Contact() {
           <div>
             <motion.h2
               className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-white"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
             >
               Let&apos;s build the <br />
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-teal-500 dark:from-indigo-400 dark:to-cyan-400">

@@ -30,7 +30,7 @@ export default function ThemeToggle({
                  hover:border-indigo-500 dark:hover:border-indigo-400 
                  hover:text-indigo-600 dark:hover:text-indigo-400
                  shadow-sm transition-all duration-300 flex items-center justify-center ${className}`}
-      whileHover={{ scale: 1.05, rotate: 15 }}
+      whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       aria-label="Toggle theme"
     >

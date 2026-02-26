@@ -26,8 +26,8 @@ const FixedBackground = memo(function FixedBackground() {
 
       {/* 2. Blobs — GPU-accelerated via translate3d keyframes */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-40 dark:opacity-30">
-        <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-purple-400 dark:bg-indigo-600 rounded-full mix-blend-multiply filter blur-3xl animate-blob will-change-transform" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-cyan-400 dark:bg-teal-600 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000 will-change-transform" />
+        <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-purple-400 dark:bg-indigo-600 rounded-full mix-blend-multiply filter blur-3xl" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-cyan-400 dark:bg-teal-600 rounded-full mix-blend-multiply filter blur-3xl" />
       </div>
 
       {/* 3. Noise Overlay */}

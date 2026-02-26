@@ -86,18 +86,20 @@ export default function Experience() {
         {/* Header */}
         <div className="text-center mb-24">
           <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
             className="inline-block p-4 rounded-full bg-indigo-500/10 mb-6 border border-indigo-500/20"
           >
             <Cpu className="w-8 h-8 text-indigo-500" />
           </motion.div>
           <motion.h2
             className="text-5xl md:text-7xl font-bold mb-6 text-slate-900 dark:text-white"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
           >
             Career{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-teal-500 dark:from-indigo-400 dark:to-cyan-400">
@@ -131,9 +133,10 @@ export default function Experience() {
                 {/* Timeline Node (Center Dot) */}
                 <div className="absolute left-4 md:left-1/2 -translate-x-1/2 top-0 md:top-8 z-20">
                   <motion.div
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
+                    transition={{ duration: 0.4 }}
                     className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-slate-50 dark:bg-[#030014] border-4 border-indigo-500 shadow-[0_0_20px_rgba(99,102,241,0.5)] flex items-center justify-center"
                   >
                     <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-indigo-500" />
@@ -148,15 +151,12 @@ export default function Experience() {
                   className={`flex-1 pl-12 md:pl-0 ${index % 2 === 0 ? "md:pr-16" : "md:pl-16"}`}
                 >
                   <motion.div
-                    className="glass p-8 rounded-[2rem] border border-white/20 dark:border-white/5 hover:border-indigo-500/30 transition-all duration-300 group relative overflow-hidden"
-                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    className="glass p-8 rounded-[2rem] border border-white/20 dark:border-white/5 hover:border-indigo-500/30 transition-all duration-300 group"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
                     viewport={{ once: true, margin: "-100px" }}
-                    whileHover={{ y: -5 }}
+                    transition={{ duration: 0.4 }}
                   >
-                    {/* Decorative gradient glow on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/0 via-indigo-500/5 to-indigo-500/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-
                     <div className="relative z-10">
                       {/* Card Header */}
                       <div className="flex flex-col sm:flex-row justify-between items-start mb-6 gap-4">

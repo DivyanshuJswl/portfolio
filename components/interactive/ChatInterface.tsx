@@ -237,22 +237,15 @@ export default function ChatInterface() {
       <AnimatePresence>
         {isChatOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 50, scale: 0.9, filter: "blur(10px)" }}
+            initial={{ opacity: 0, y: 8, scale: 0.97 }}
             animate={{
               opacity: 1,
               y: 0,
               scale: 1,
-              filter: "blur(0px)",
               height: isMinimized ? "auto" : "min(660px, 82vh)",
             }}
-            exit={{ opacity: 0, y: 50, scale: 0.9, filter: "blur(10px)" }}
-            transition={{
-              opacity: { type: "spring", bounce: 0.3, duration: 0.5 },
-              y:       { type: "spring", bounce: 0.3, duration: 0.5 },
-              scale:   { type: "spring", bounce: 0.3, duration: 0.5 },
-              height:  { type: "spring", bounce: 0.3, duration: 0.5 },
-              filter:  { type: "tween",  duration: 0.3, ease: "easeOut" },
-            }}
+            exit={{ opacity: 0, y: 8, scale: 0.97 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
             className="fixed bottom-24 right-4 md:right-6 z-[100] w-[calc(100vw-2rem)] md:w-[420px] flex flex-col overflow-hidden
               rounded-[28px] shadow-2xl shadow-slate-900/40
               border border-slate-200 dark:border-slate-700/60
@@ -356,9 +349,9 @@ export default function ChatInterface() {
                           <motion.button
                             key={question}
                             onClick={() => { if (!isThinking) sendMessage(question); }}
-                            initial={{ opacity: 0, x: -8 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.15 + idx * 0.05 }}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.2, delay: idx * 0.04 }}
                             className="text-left px-4 py-3 rounded-xl transition-all duration-200 group flex items-center justify-between
                               text-xs font-medium
                               text-slate-600 dark:text-slate-300
