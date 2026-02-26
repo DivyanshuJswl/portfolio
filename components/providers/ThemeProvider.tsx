@@ -1,5 +1,4 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import ThemeWrapper from '@/components/ThemeWrapper';
 
 type Theme = 'dark' | 'light';
 
@@ -20,7 +19,7 @@ export function useTheme() {
 }
 
 export default function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>(() => {
+  const [theme, setTheme] = useState<Theme>(() => {
     const stored = localStorage.getItem('portfolio-theme');
     return stored === 'light' ? 'light' : 'dark';
   });
@@ -39,13 +38,9 @@ export default function ThemeProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('portfolio-theme', theme);
   }, [theme]);
 
-  const setTheme = (newTheme: Theme) => {
-    setThemeState(newTheme);
-  };
-
   return (
     <ThemeContext.Provider value={{ theme, setTheme, systemTheme: undefined }}>
-      <ThemeWrapper>{children}</ThemeWrapper>
+      {children}
     </ThemeContext.Provider>
   );
 }

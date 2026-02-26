@@ -1,6 +1,6 @@
 import Groq from 'groq-sdk';
 
-export const config = { runtime: 'edge' };
+const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 const SYSTEM_PROMPT = `
 You are the advanced AI digital twin of **Divyanshu Jaiswal**.
@@ -68,8 +68,6 @@ export default async function handler(req: Request): Promise<Response> {
 
   try {
     const { messages } = await req.json();
-
-    const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
     const chatCompletion = await groq.chat.completions.create({
       messages: [

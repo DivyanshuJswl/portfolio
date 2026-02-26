@@ -1,6 +1,6 @@
 // components/sections/Experience.tsx
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import {
   Briefcase,
   GraduationCap,

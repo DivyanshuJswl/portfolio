@@ -135,18 +135,20 @@ export default function Lab() {
       >
         <div className="text-center mb-20">
           <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
             className="inline-block p-4 rounded-full bg-teal-500/10 mb-6 border border-teal-500/20"
           >
             <Layers className="w-8 h-8 text-teal-500" />
           </motion.div>
           <motion.h2
             className="text-5xl md:text-7xl font-bold mb-6 text-slate-900 dark:text-white tracking-tight"
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
           >
             The{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-teal-500 dark:from-indigo-400 dark:to-cyan-400">
@@ -168,10 +170,10 @@ export default function Lab() {
                   ? "lg:col-span-3 min-h-[500px]"
                   : "lg:col-span-2 min-h-[450px]"
               }`}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
+              transition={{ duration: 0.4, delay: idx * 0.08 }}
             >
               {/* 1. Project Image Area */}
               <div className="relative w-full h-48 sm:h-56 overflow-hidden">
@@ -180,7 +182,7 @@ export default function Lab() {
                   alt={project.title}
                   loading="lazy"
                   decoding="async"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105 absolute inset-0 w-full h-full"
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03] absolute inset-0 w-full h-full"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-[#0B1120] to-transparent opacity-80" />
 

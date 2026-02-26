@@ -173,6 +173,13 @@ function MarkdownContent({ content }: { content: string }) {
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
+const quickQuestions = [
+  "Tell me about your experience",
+  "What is your tech stack?",
+  "Show me your best project",
+  "How can I contact you?",
+];
+
 export default function ChatInterface() {
   const { messages, isThinking, isChatOpen, toggleChat, sendMessage } =
     useChatStore();
@@ -197,13 +204,6 @@ export default function ChatInterface() {
     await sendMessage(input);
     setInput("");
   };
-
-  const quickQuestions = [
-    "Tell me about your experience",
-    "What is your tech stack?",
-    "Show me your best project",
-    "How can I contact you?",
-  ];
 
   return (
     <>

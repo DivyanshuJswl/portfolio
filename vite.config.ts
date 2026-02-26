@@ -23,12 +23,16 @@ export default defineConfig({
   },
   build: {
     target: 'es2017',
+    sourcemap: false,
+    cssCodeSplit: true,
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
         manualChunks: {
           'react-vendor': ['react', 'react-dom'],
           'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
           'motion-vendor': ['framer-motion'],
+          'ui-vendor': ['lucide-react', 'zustand'],
         },
       },
     },

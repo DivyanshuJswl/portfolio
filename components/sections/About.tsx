@@ -47,10 +47,10 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center mb-16 lg:mb-24">
           {/* Left Column: Text */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             className="flex-1 space-y-6"
           >
             <h2 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
@@ -90,7 +90,7 @@ export default function About() {
 
             {/* Stats Grid - Kept 2 cols for mobile readability */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {stats.map((stat, idx) => (
+              {stats.map((stat) => (
                 <div
                   key={stat.label}
                   className="text-center p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-200 dark:border-white/5"
@@ -108,10 +108,10 @@ export default function About() {
 
           {/* Right Column: Responsive Image Area */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.4 }}
             className="w-full"
           >
             {/* MOBILE/TABLET LAYOUT (< lg) */}
@@ -198,11 +198,10 @@ export default function About() {
               // Updated to match Lab/Contact style: stronger glass, rounded-3xl, subtle border
 
               className="glass p-10 rounded-3xl hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 group border border-white/20 dark:border-white/5"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
             >
               <div className="flex items-start gap-5">
                 <div className="p-4 bg-indigo-50 dark:bg-indigo-500/10 rounded-2xl group-hover:bg-indigo-100 dark:group-hover:bg-indigo-500/20 transition-colors shadow-sm">

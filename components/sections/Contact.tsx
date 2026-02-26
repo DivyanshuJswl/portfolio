@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Mail, Github, Linkedin, Twitter, Send, Loader2, CheckCircle, AlertCircle } from "lucide-react";
 
@@ -17,6 +17,9 @@ export default function Contact() {
   });
 
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const resetTimerRef = useRef<ReturnType<typeof setTimeout>>();
+
+  useEffect(() => () => clearTimeout(resetTimerRef.current), []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -51,7 +54,7 @@ export default function Contact() {
         setStatus("success");
         setFormData({ name: "", email: "", message: "" });
         // Reset success message after 5 seconds
-        setTimeout(() => setStatus("idle"), 5000);
+        resetTimerRef.current = setTimeout(() => setStatus("idle"), 5000);
       } else {
         setStatus("error");
       }

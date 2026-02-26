@@ -1,15 +1,14 @@
 // components/sections/Hero.tsx
 import { motion } from "framer-motion";
-import { ArrowDown, Terminal, Download } from "lucide-react";
+import { Terminal, Download } from "lucide-react";
 import Scene from "@/components/3d/Scene";
 import ErrorBoundary from "../ErrorBoundary";
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
+const fadeIn = {
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: { duration: 0.4, ease: "easeOut" },
   },
 };
 
@@ -18,14 +17,14 @@ const staggerContainer = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.1,
+      staggerChildren: 0.1,
+      delayChildren: 0,
     },
   },
 };
 
 export default function Hero() {
-  
+
   return (
     <section className="relative min-h-screen w-full overflow-x-hidden bg-transparent">
       {/* Layout */}
@@ -50,7 +49,7 @@ export default function Hero() {
           >
             {/* Status Badge */}
             <motion.div
-              variants={fadeInUp}
+              variants={fadeIn}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 border backdrop-blur-md bg-white/30 border-white/20 dark:bg-slate-800/30 dark:border-white/10 shadow-lg"
             >
               <span className="relative flex h-2 w-2">
@@ -66,7 +65,7 @@ export default function Hero() {
             </motion.div>
 
             <motion.h1
-              variants={fadeInUp}
+              variants={fadeIn}
               className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 text-slate-900 dark:text-white"
             >
               Divyanshu <br className="hidden lg:block" />
@@ -76,7 +75,7 @@ export default function Hero() {
             </motion.h1>
 
             <motion.div
-              variants={fadeInUp}
+              variants={fadeIn}
               className="text-lg sm:text-xl md:text-2xl mb-8 font-light flex flex-wrap justify-center lg:justify-start gap-3 items-center text-slate-700 dark:text-slate-300"
             >
               <Terminal className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
@@ -86,7 +85,7 @@ export default function Hero() {
             </motion.div>
 
             <motion.p
-              variants={fadeInUp}
+              variants={fadeIn}
               className="text-base sm:text-lg mb-10 leading-relaxed max-w-lg mx-auto lg:mx-0 text-slate-600 dark:text-slate-400"
             >
               Building scalable microservices and high-throughput systems.
@@ -105,14 +104,14 @@ export default function Hero() {
             </motion.p>
 
             <motion.div
-              variants={fadeInUp}
+              variants={fadeIn}
               className="flex flex-col items-center lg:items-start gap-6"
             >
               {/* Row 1: The Two Main Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                 <a
                   href="#lab"
-                  className="px-8 py-4 rounded-xl font-bold shadow-xl transition-all duration-300 min-w-[160px] transform hover:-translate-y-1 bg-slate-900 text-white hover:bg-slate-800 dark:bg-gradient-to-r dark:from-indigo-600 dark:to-blue-600 dark:hover:shadow-indigo-500/25 flex items-center justify-center text-center"
+                  className="px-8 py-4 rounded-xl font-bold shadow-xl transition-all duration-300 min-w-[160px] bg-slate-900 text-white hover:bg-slate-800 dark:bg-gradient-to-r dark:from-indigo-600 dark:to-blue-600 dark:hover:shadow-indigo-500/25 flex items-center justify-center text-center"
                 >
                   View Projects
                 </a>
@@ -120,7 +119,7 @@ export default function Hero() {
                 <a
                   href="/resume.pdf"
                   download="Divyanshu_Jaiswal_Resume.pdf"
-                  className="px-8 py-4 rounded-xl font-semibold transition-all duration-300 backdrop-blur-md min-w-[160px] border border-slate-200 bg-white/50 text-slate-700 hover:bg-white hover:border-slate-300 dark:bg-white/5 dark:border-white/10 dark:text-white dark:hover:bg-white/10 flex items-center justify-center gap-2 transform hover:-translate-y-1 text-center"
+                  className="px-8 py-4 rounded-xl font-semibold transition-all duration-300 backdrop-blur-md min-w-[160px] border border-slate-200 bg-white/50 text-slate-700 hover:bg-white hover:border-slate-300 dark:bg-white/5 dark:border-white/10 dark:text-white dark:hover:bg-white/10 flex items-center justify-center gap-2 text-center"
                 >
                   <Download className="w-5 h-5" />
                   Resume
@@ -130,15 +129,6 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
-
-      <motion.div
-        className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 pointer-events-none hidden lg:block"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: [0, 10, 0] }}
-        transition={{ delay: 1, duration: 2, repeat: Infinity }}
-      >
-        <ArrowDown className="w-6 h-6 text-slate-400 dark:text-slate-600" />
-      </motion.div>
     </section>
   );
 }
