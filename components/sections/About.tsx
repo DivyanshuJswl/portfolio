@@ -195,8 +195,6 @@ export default function About() {
           {highlights.map((item, index) => (
             <motion.div
               key={item.title}
-              // Updated to match Lab/Contact style: stronger glass, rounded-3xl, subtle border
-
               className="glass p-10 rounded-3xl hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 group border border-white/20 dark:border-white/5"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}

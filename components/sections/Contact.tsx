@@ -86,6 +86,7 @@ export default function Contact() {
               className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-white"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.1 }}
             >
               Let&apos;s build the <br />
